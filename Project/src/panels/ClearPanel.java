@@ -24,6 +24,7 @@ public class ClearPanel extends JPanel{
 	private JLabel scoreLabel;
 	private String scoreText;
 	private int score; // 플레이어 점수
+	private int stage;
 	
 	private ImageIcon ClearMessageImg = new ImageIcon("images/게임클리어.gif");
 	private Image ClearMessage = ClearMessageImg.getImage();
@@ -45,6 +46,12 @@ public class ClearPanel extends JPanel{
 	}
 	public void setScore(int score) {
 		this.score = score;
+	}
+	public void setStage(int stage) {
+		this.stage = stage;
+	}
+	public int getStage() {
+		return this.stage;
 	}
 	public ClearPanel(Object o){
 		scoreLabel = new JLabel(Integer.toString(score));
@@ -81,7 +88,7 @@ public class ClearPanel extends JPanel{
 				// TODO Auto-generated method stub
 				if(!(getName().equals("")||getName().equals("이름을 입력해주세요"))) {
 					DBConnection db = new DBConnection();
-					db.insertDB(name.getText() , Integer.toString(score));	
+					db.insertDB(name.getText() , Integer.toString(score), getStage());	
 				}
 			}
 		});

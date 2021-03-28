@@ -565,6 +565,7 @@ public class Stage2Panel extends JPanel{
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+		main.getClearPanel().setStage(2);
 		main.getClearPanel().setName("이름을 입력해주세요");
 		player.setScore(player.getScore()+Integer.valueOf(time.getSeconds())*10+player.getHp()/200*100);
 		main.getClearPanel().setScore(player.getScore());

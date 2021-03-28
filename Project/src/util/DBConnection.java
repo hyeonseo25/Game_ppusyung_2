@@ -28,8 +28,8 @@ public class DBConnection {
 		}
 	}
 	
-	public void insertDB(String name, String score) {
-		String SQL = "insert into user (name, score) values ('"+ name + "', '" + score + "');"; 
+	public void insertDB(String name, String score, int stage) {
+		String SQL = "insert into user (name, score, stage) values ('"+ name + "', '" + score + "','" + stage + "');"; 
 		try {
 			stmt.executeUpdate(SQL);
 		} catch(Exception e) {
