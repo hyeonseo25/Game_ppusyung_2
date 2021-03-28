@@ -9,10 +9,12 @@ import javax.swing.JOptionPane;
 import panels.ClearPanel;
 import panels.StartPanel;
 import panels.GameOverPanel;
-import panels.GamePanel;
 import panels.InfoPanel;
 import panels.RankingPanel;
 import panels.SelectStagePanel;
+import panels.Stage1Panel;
+import panels.Stage2Panel;
+import panels.Stage3Panel;
 
 public class Main extends ListenerAdapter{ 
 	// 필요한 메서드를 그때그때 오버라이드 하기 위해서 따로 추상클래스를 빼서 상속받은듯
@@ -23,7 +25,10 @@ public class Main extends ListenerAdapter{
 	private int stage = 0;
 	private StartPanel startPanel; 			// 시작패널
 	private SelectStagePanel selectStagePanel;
-	private GamePanel gamePanel; 			// 게임패널
+	private Stage1Panel stage1Panel;
+	private Stage2Panel stage2Panel;
+	private Stage3Panel stage3Panel;
+	// private GamePanel gamePanel; 			// 게임패널
 	private GameOverPanel gameOverPanel; 	// 게임오버패널
 	private ClearPanel clearPanel; 			// 클리어패널
 	private RankingPanel rankingPanel; 		// 랭킹 패널
@@ -52,6 +57,10 @@ public class Main extends ListenerAdapter{
 		this.stage = stage;
 	}
 	
+	public void setLocation(int location) {
+		this.location = location;
+	}
+	
 	public CardLayout getCl() {
 		return cl;
 	}
@@ -70,7 +79,10 @@ public class Main extends ListenerAdapter{
 		// 패널에 main에 있는 리스너를 넣어줌
 		startPanel = new StartPanel(this); 
 		selectStagePanel = new SelectStagePanel(this); 
-		gamePanel = new GamePanel(this, frame, cl);
+		//gamePanel = new GamePanel(this, frame, cl);
+		stage1Panel = new Stage1Panel(this, frame, cl);
+		stage2Panel = new Stage2Panel(this, frame, cl);
+		stage3Panel = new Stage3Panel(this, frame, cl);
 		gameOverPanel = new GameOverPanel(this);
 		clearPanel = new ClearPanel(this);
 		rankingPanel = new RankingPanel(this);
@@ -79,7 +91,10 @@ public class Main extends ListenerAdapter{
 		// 모든 패널의 레이아웃을 null로 변환
 		startPanel.setLayout(null);
 		selectStagePanel.setLayout(null);
-		gamePanel.setLayout(null);
+		stage1Panel.setLayout(null);
+		stage2Panel.setLayout(null);
+		stage3Panel.setLayout(null);
+		//gamePanel.setLayout(null);
 		gameOverPanel.setLayout(null);
 		clearPanel.setLayout(null);
 		rankingPanel.setLayout(null);
@@ -87,8 +102,11 @@ public class Main extends ListenerAdapter{
 		
 		// 프레임에 패널들을 추가한다.(카드 레이아웃을 위한 패널들)
 		frame.getContentPane().add(startPanel, "start");
-		frame.getContentPane().add(selectStagePanel, "stage");
-		frame.getContentPane().add(gamePanel, "game");
+		frame.getContentPane().add(selectStagePanel, "selectStage");
+		frame.getContentPane().add(stage1Panel, "stage1");
+		frame.getContentPane().add(stage2Panel, "stage2");
+		frame.getContentPane().add(stage3Panel, "stage3");
+		// frame.getContentPane().add(gamePanel, "game");
 		frame.getContentPane().add(gameOverPanel, "gameover");
 		frame.getContentPane().add(clearPanel, "clear");
 		frame.getContentPane().add(rankingPanel, "ranking");
@@ -102,22 +120,43 @@ public class Main extends ListenerAdapter{
 	public void mousePressed(MouseEvent e) { // mouseClicked로 변경가능
 		if (e.getComponent().getName().equals("StartButton")) {
 			startPanel.closeMusic(); // 시작화면 음악 재생 중지
-			cl.show(frame.getContentPane(), "stage"); // stage패널을 카드레이아웃 최상단으로 변경
+			cl.show(frame.getContentPane(), "selectStage"); // stage패널을 카드레이아웃 최상단으로 변경
 			selectStagePanel.playMusic(); // 스테이지화면 음악 재생
 			selectStagePanel.requestFocus(); // 리스너를 stage패널에 강제로 줌
+			frame.getContentPane().remove(stage1Panel); // 방금 했던 게임 패널을 프레임에서 삭제
+			frame.getContentPane().remove(stage2Panel); // 방금 했던 게임 패널을 프레임에서 삭제
+			frame.getContentPane().remove(stage3Panel); // 방금 했던 게임 패널을 프레임에서 삭제
 			location = 4; // 현재 패널 stage
 		}
 		else if (e.getComponent().getName().equals("GameButton")) { // StartButton이라는 이름을 가진 버튼을 눌렀다면
 			selectStagePanel.closeMusic();
-			
-			frame.getContentPane().remove(gamePanel); // 방금 했던 게임 패널을 프레임에서 삭제
-			gamePanel = new GamePanel(this, frame, cl); // 새 게임 패널 생성
-			gamePanel.setLayout(null);
-			gamePanel.gameStart(); // 게임 시작 메서드 실행
-			frame.getContentPane().add(gamePanel, "game"); // 프레임에 게임 패널 추가
-			cl.show(frame.getContentPane(), "game"); // game패널을 카드레이아웃 최상단으로 변경
-			gamePanel.requestFocus(); // 리스너를 game패널에 강제로 줌
-			
+			switch (stage) {
+			case 1:
+				stage1Panel = new Stage1Panel(this, frame, cl); // 새 게임 패널 생성
+				stage1Panel.setLayout(null);
+				stage1Panel.gameStart(); // 게임 시작 메서드 실행
+				frame.getContentPane().add(stage1Panel, "stage1"); // 프레임에 게임 패널 추가
+				cl.show(frame.getContentPane(), "stage1"); // game패널을 카드레이아웃 최상단으로 변경
+				stage1Panel.requestFocus(); // 리스너를 game패널에 강제로 줌
+				break;
+			case 2:
+				stage2Panel = new Stage2Panel(this, frame, cl); // 새 게임 패널 생성
+				stage2Panel.setLayout(null);
+				stage2Panel.gameStart(); // 게임 시작 메서드 실행
+				frame.getContentPane().add(stage2Panel, "stage2"); // 프레임에 게임 패널 추가
+				cl.show(frame.getContentPane(), "stage2"); // game패널을 카드레이아웃 최상단으로 변경
+				stage2Panel.requestFocus(); // 리스너를 game패널에 강제로 줌
+				break;
+			case 3:
+				stage3Panel = new Stage3Panel(this, frame, cl); // 새 게임 패널 생성
+				stage3Panel.setLayout(null);
+				stage3Panel.gameStart(); // 게임 시작 메서드 실행
+				frame.getContentPane().add(stage3Panel, "stage3"); // 프레임에 게임 패널 추가
+				cl.show(frame.getContentPane(), "stage3"); // game패널을 카드레이아웃 최상단으로 변경
+				stage3Panel.requestFocus(); // 리스너를 game패널에 강제로 줌
+				break;
+			default: break;
+			}
 			location = 5;  // 현재 패널 game
 		}
 		

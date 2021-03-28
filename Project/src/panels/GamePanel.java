@@ -537,6 +537,7 @@ public class GamePanel extends JPanel{
 	
 	public void gameOver() {
 		closeMusic();
+		main.setLocation(6);
 		time.interrupt();
 		Sound("music/dieMusic.wav", false);
 		for (int i = 0; i < monster.getMonsterList().size(); i++) {
