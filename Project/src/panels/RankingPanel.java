@@ -21,7 +21,6 @@ public class RankingPanel extends JPanel implements MouseListener{
 	private JButton arrowbt4;
 	
 	private int x = 0;
-	private int y = 0;
 	
 	private Image oneStageRangking = new ImageIcon("images/·©Å·ÆÐ³Î¹è°æ.png").getImage();
 	
@@ -31,17 +30,7 @@ public class RankingPanel extends JPanel implements MouseListener{
 	private int x1 = oneStageRangking.getWidth(null) - 150;
 	private int x2 = oneStageRangking.getWidth(null) + 20;
 	private int x3 = 2*oneStageRangking.getWidth(null) - 150;
-	private int x4 = 3*oneStageRangking.getWidth(null) + 20;
-
-
-	public int getX() {
-		return x;
-	}
-
-
-	public void setX(int x) {
-		this.x += x;
-	}
+	private int x4 = 2*oneStageRangking.getWidth(null) + 20;
 
 
 	public RankingPanel(Object o) {
@@ -101,7 +90,7 @@ public class RankingPanel extends JPanel implements MouseListener{
 		arrowbt4.addMouseListener(this);
 		
 		add(arrowbt4);
-		
+		repaintThread();
 		
 	
 	}
@@ -116,7 +105,7 @@ public class RankingPanel extends JPanel implements MouseListener{
 					repaint();
 					try {
 					
-						Thread.sleep(50);
+						Thread.sleep(10);
 					}catch(Exception e) {
 						e.printStackTrace();
 					}
@@ -131,7 +120,6 @@ public class RankingPanel extends JPanel implements MouseListener{
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		System.out.println("x2 : " + x);
-		x-=50;
 		g.drawImage(back, x, 0, this);
 
 		g.setFont(new Font("³ª´®¹Ù¸¥°íµñ", Font.BOLD, 40));
@@ -161,42 +149,74 @@ public class RankingPanel extends JPanel implements MouseListener{
 					case 1:
 						while (x > -(oneStageRangking.getWidth(null))) {
 
-							x -= 40;
-							x1 -= 40;
-							x2 -= 40;
-							x3 -= 40;
-							x4 -= 40;
+							x -= 20;
+							x1 -= 20;
+							x2 -= 20;
+							x3 -= 20;
+							x4 -= 20;
 							arrowbt1.setLocation(x1, 500);
 							arrowbt2.setLocation(x2, 500);
 							arrowbt3.setLocation(x3, 500);
 							arrowbt4.setLocation(x4, 500);
-							System.out.println("x1 : " + x);
-							
-							
 							try {
-								Thread.sleep(50);
+								Thread.sleep(10);
 							} catch(Exception e) {
 								e.printStackTrace();
 							}
-							//System.out.println(x);
 						}
 						break;
-				case 2:
-						if (x < 0) {
-							x += 1;
-							System.out.println(x);
+					case 2:
+						while (x < 0) {
+							x += 20;
+							x1 += 20;
+							x2 += 20;
+							x3 += 20;
+							x4 += 20;
+							arrowbt1.setLocation(x1, 500);
+							arrowbt2.setLocation(x2, 500);
+							arrowbt3.setLocation(x3, 500);
+							arrowbt4.setLocation(x4, 500);
+							try {
+								Thread.sleep(10);
+							} catch(Exception e) {
+								e.printStackTrace();
+							}
 						} 
 						break;
 					case 3:
-						if (x > (-2 * (oneStageRangking.getWidth(null)))) {
-							x -= 1;
-							System.out.println(x);
+						while (x > (-2 * (oneStageRangking.getWidth(null)))) {
+							x -= 20;
+							x1 -= 20;
+							x2 -= 20;
+							x3 -= 20;
+							x4 -= 20;
+							arrowbt1.setLocation(x1, 500);
+							arrowbt2.setLocation(x2, 500);
+							arrowbt3.setLocation(x3, 500);
+							arrowbt4.setLocation(x4, 500);
+							try {
+								Thread.sleep(10);
+							} catch(Exception e) {
+								e.printStackTrace();
+							}
 						}
 						break;
 					case 4: 
-						if (x < -(oneStageRangking.getWidth(null))) {
-							x += 1;
-							System.out.println(x);
+						while (x < -(oneStageRangking.getWidth(null))) {
+							x += 20;
+							x1 += 20;
+							x2 += 20;
+							x3 += 20;
+							x4 += 20;
+							arrowbt1.setLocation(x1, 500);
+							arrowbt2.setLocation(x2, 500);
+							arrowbt3.setLocation(x3, 500);
+							arrowbt4.setLocation(x4, 500);
+							try {
+								Thread.sleep(10);
+							} catch(Exception e) {
+								e.printStackTrace();
+							}
 						}
 						break;
 					}
@@ -210,9 +230,8 @@ public class RankingPanel extends JPanel implements MouseListener{
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getComponent().getName().equals("arrowbt1")) {
-			repaintThread();
-
-			//pushBackground(1);
+			
+			pushBackground(1);
 		} else if(e.getComponent().getName().equals("arrowbt2")) {
 //			x -= oneStageRangking.getWidth(null);
 			pushBackground(2);
