@@ -18,7 +18,7 @@ import javax.swing.JTextField;
 
 import util.DBConnection;
 
-public class ClearPanel extends JPanel{
+public class ClearPanel extends JPanel {
 	private JTextField name;
 	private JButton applybt;
 	private JLabel scoreLabel;
