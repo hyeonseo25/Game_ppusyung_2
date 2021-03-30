@@ -21,10 +21,7 @@ public class RankingPanel extends JPanel implements MouseListener{
 	private JButton arrowbt4;
 	
 	private int x = 0;
-	
-	
-	
-	
+	private int y = 0;
 	
 	private Image oneStageRangking = new ImageIcon("images/랭킹패널배경.png").getImage();
 	
@@ -105,8 +102,7 @@ public class RankingPanel extends JPanel implements MouseListener{
 		
 		add(arrowbt4);
 		
-		repaintThread();
-
+		
 	
 	}
 	public void repaintThread() {
@@ -116,10 +112,11 @@ public class RankingPanel extends JPanel implements MouseListener{
 			public void run() {
 				// TODO Auto-generated method stub
 				while(true) {
+				
 					repaint();
 					try {
-						
-						Thread.sleep(40);
+					
+						Thread.sleep(50);
 					}catch(Exception e) {
 						e.printStackTrace();
 					}
@@ -133,8 +130,10 @@ public class RankingPanel extends JPanel implements MouseListener{
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
+		System.out.println("x2 : " + x);
+		x-=50;
 		g.drawImage(back, x, 0, this);
-		
+
 		g.setFont(new Font("나눔바른고딕", Font.BOLD, 40));
 		DBConnection db = new DBConnection(); //디비 연결
 		String sql = "select * from user order by score DESC"; //score 내림차순으로 정렬
@@ -150,19 +149,18 @@ public class RankingPanel extends JPanel implements MouseListener{
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
+		
+		
 	}
 
 	public void pushBackground(int btn) {
 		new Thread(new Runnable() {
 			@Override
 			public void run() {
-				
-				boolean flag = true;
-				// TODO Auto-generated method stub
-				while(flag == true) {
-					switch(btn){
+				switch(btn){
 					case 1:
 						while (x > -(oneStageRangking.getWidth(null))) {
+
 							x -= 40;
 							x1 -= 40;
 							x2 -= 40;
@@ -172,44 +170,39 @@ public class RankingPanel extends JPanel implements MouseListener{
 							arrowbt2.setLocation(x2, 500);
 							arrowbt3.setLocation(x3, 500);
 							arrowbt4.setLocation(x4, 500);
-
+							System.out.println("x1 : " + x);
+							
+							
 							try {
-								Thread.sleep(40);
+								Thread.sleep(50);
 							} catch(Exception e) {
 								e.printStackTrace();
 							}
 							//System.out.println(x);
 						}
 						break;
-					case 2:
+				case 2:
 						if (x < 0) {
 							x += 1;
 							System.out.println(x);
-						} else {
-							flag = false;
-						}
+						} 
 						break;
 					case 3:
 						if (x > (-2 * (oneStageRangking.getWidth(null)))) {
 							x -= 1;
 							System.out.println(x);
-						} else {
-							flag = false;
 						}
 						break;
 					case 4: 
 						if (x < -(oneStageRangking.getWidth(null))) {
 							x += 1;
 							System.out.println(x);
-						} else {
-							flag = false;
 						}
 						break;
 					}
 					
 					
 				}
-			}
 		}).start();
 	}
 	
@@ -217,7 +210,9 @@ public class RankingPanel extends JPanel implements MouseListener{
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getComponent().getName().equals("arrowbt1")) {
-			pushBackground(1);
+			repaintThread();
+
+			//pushBackground(1);
 		} else if(e.getComponent().getName().equals("arrowbt2")) {
 //			x -= oneStageRangking.getWidth(null);
 			pushBackground(2);
