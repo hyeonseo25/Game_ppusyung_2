@@ -178,6 +178,7 @@ public class Main extends ListenerAdapter{
 		}
 		
 		else if (e.getComponent().getName().equals("RankingButton")) { // RankingButton이라는 이름을 가진 버튼을 눌렀다면
+			rankingPanel.scoreList = rankingPanel.setScores();
 			startPanel.closeMusic(); // 시작화면  음악 재생 중지
 			cl.show(frame.getContentPane(), "ranking"); // ranking패널을 카드레이아웃 최상단으로 변경
 			rankingPanel.requestFocus(); // 리스너를 ranking패널에 강제로 줌

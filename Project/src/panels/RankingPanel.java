@@ -6,6 +6,7 @@ import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -19,6 +20,9 @@ public class RankingPanel extends JPanel implements MouseListener{
 	private JButton arrowbt2;
 	private JButton arrowbt3;
 	private JButton arrowbt4;
+	public ArrayList<String[]> scoreList = new ArrayList<String[]>(6);
+
+
 	
 	private int x = 0;
 	
@@ -34,6 +38,8 @@ public class RankingPanel extends JPanel implements MouseListener{
 
 
 	public RankingPanel(Object o) {
+		
+		
 		Image exitButton = new ImageIcon("images/button/ArrowButton.png").getImage();
 		
 		replaybt = new JButton(new ImageIcon(exitButton));
@@ -91,8 +97,68 @@ public class RankingPanel extends JPanel implements MouseListener{
 		
 		add(arrowbt4);
 		repaintThread();
-		
+
+	}
 	
+	public ArrayList<String[]> setScores() {
+		String[] stage1Name = new String[10];
+		String[] stage1Score = new String[10];
+		String[] stage2Name = new String[10];
+		String[] stage2Score = new String[10];
+		String[] stage3Name = new String[10];
+		String[] stage3Score = new String[10];
+		
+		ArrayList<String[]> list = new ArrayList<String[]>();
+
+		
+		DBConnection db = new DBConnection(); //디비 연결
+		String sql1 = "select * from user where stage = 1 order by score DESC"; //score 내림차순으로 정렬
+		String sql2 = "select * from user where stage = 2 order by score DESC";
+		String sql3 = "select * from user where stage = 3 order by score DESC";
+		try {
+			db.rs = db.stmt.executeQuery(sql1);
+			System.out.println("DBDBDB");
+			int i = 0;
+			while(db.rs.next() && i < 10) {
+				System.out.println("name " + db.rs.getString("name"));
+
+				stage1Name[i] = db.rs.getString("name");
+				stage1Score[i] = db.rs.getString("score");			
+				i++;
+			}
+			
+	
+			db.rs = db.stmt.executeQuery(sql2);
+			i = 0;
+			while(db.rs.next() && i < 10) {
+				stage2Name[i] = db.rs.getString("name");
+				stage2Score[i] = db.rs.getString("score");			
+				i++;
+			}
+			
+			db.rs = db.stmt.executeQuery(sql3);
+			i = 0;
+			while(db.rs.next() && i < 10) {
+				stage3Name[i] = db.rs.getString("name");
+				stage3Score[i] = db.rs.getString("score");			
+				i++;
+			}
+			
+			list.add(stage1Name);
+			list.add(stage1Score);
+
+			list.add(stage2Name);
+			list.add(stage2Score);
+
+			list.add(stage3Name);
+			list.add(stage3Score);
+			System.out.println("list.get(0)" + list.get(0));
+			
+			return list;
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return list;
 	}
 	public void repaintThread() {
 		new Thread(new Runnable() {
@@ -119,25 +185,23 @@ public class RankingPanel extends JPanel implements MouseListener{
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		System.out.println("x2 : " + x);
 		g.drawImage(back, x, 0, this);
-
 		g.setFont(new Font("나눔바른고딕", Font.BOLD, 40));
-		DBConnection db = new DBConnection(); //디비 연결
-		String sql = "select * from user order by score DESC"; //score 내림차순으로 정렬
-		try {
-			db.rs = db.stmt.executeQuery(sql);
-			
-			int i = 0;
-			while(db.rs.next() && i < 10) {
-				g.drawString(db.rs.getString("name"), 700 + x, 265 + i * 72);
-				g.drawString(db.rs.getString("score"), 1100 + x, 265 + i * 72);				
-				i++;
-			}
-		}catch(Exception e) {
-			e.printStackTrace();
+
+		for (int i = 0; i < 10; i ++) {
+			try {
+				g.drawString(scoreList.get(0)[i], 700 + x, 265 + i * 72);								} catch(Exception e) {}
+			try {
+				g.drawString(scoreList.get(1)[i], 1100 + x, 265 + i * 72); 								}catch(Exception e) {}
+			try {
+				g.drawString(scoreList.get(2)[i], oneStageRangking.getWidth(null) + 700 + x, 265 + i * 72); }catch(Exception e) {}
+			try {
+				g.drawString(scoreList.get(3)[i], oneStageRangking.getWidth(null) + 1100 + x, 265 + i * 72); }catch(Exception e) {}
+			try {
+				g.drawString(scoreList.get(4)[i], 2*oneStageRangking.getWidth(null) + 700 + x, 265 + i * 72); }catch(Exception e) {}
+			try {
+				g.drawString(scoreList.get(5)[i], 2*oneStageRangking.getWidth(null) + 1100 + x, 265 + i * 72); }catch(Exception e) {}
 		}
-		
 		
 	}
 
