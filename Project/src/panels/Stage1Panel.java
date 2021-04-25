@@ -52,7 +52,9 @@ public class Stage1Panel extends JPanel{
 	private Clip backgroundMusic;
 	
 	//패널 배경
-	private ImageIcon backImg = new ImageIcon("images/게임패널배경.png");
+	//private ImageIcon backImg = new ImageIcon("images/게임패널배경.png");
+	private ImageIcon backImg = new ImageIcon("images/map/배경01.png");
+
 	private Image back = backImg.getImage();
 	
 	//체력 이미지
@@ -60,9 +62,12 @@ public class Stage1Panel extends JPanel{
 	private Image hp = hpImg.getImage();
 	
 	// 발판 이미지 아이콘들
-	private ImageIcon field1Ic = new ImageIcon("images/map/발판.png"); // 발판
+	//private ImageIcon field1Ic = new ImageIcon("images/map/발판.png"); // 발판
+	private ImageIcon field1Ic = new ImageIcon("images/map/땅-01.png"); // 발판
+
 	private ImageIcon field2Ic = new ImageIcon("images/map/공중발판.png"); // 공중발판
 
+	
 	// 장애물 이미지 아이콘들
 	private ImageIcon tacle10Ic = new ImageIcon("images/map/무당벌레장애물.gif"); // 1칸 장애물
 	
