@@ -10,6 +10,8 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
 
@@ -19,7 +21,7 @@ public class StartPanel extends JPanel{
 	private JButton rankbt;
 	private JButton infobt;
 	
-	private ImageIcon backImg = new ImageIcon("images/시작패널배경.png");
+	private ImageIcon backImg = new ImageIcon("images/메인페이지.png");
 	private Image back = backImg.getImage();
 	
 	private Clip backgroundMusic;
@@ -27,10 +29,13 @@ public class StartPanel extends JPanel{
 	private Dimension view = Toolkit.getDefaultToolkit().getScreenSize();
 	
 	public StartPanel(Object o) {
-		Image startButton = new ImageIcon("images/button/StartButton.png").getImage();
-		Image rankButton = new ImageIcon("images/button/RankButton.png").getImage();
+		Image startButton = new ImageIcon("images/button/플레이버튼.png").getImage();
+		ImageIcon startButtonMouseOver = new ImageIcon("images/button/플레이버튼(마우스 오버).png");
+		Image rankButton = new ImageIcon("images/button/랭킹버튼.png").getImage();
+		ImageIcon rankButtonMouseOver = new ImageIcon("images/button/랭킹버튼(마우스 오버).png");
 		Image exitButton = new ImageIcon("images/button/ExitButton.png").getImage();
-		Image InfoButton = new ImageIcon("images/button/InfoButton.png").getImage();
+		Image InfoButton = new ImageIcon("images/button/설명버튼.png").getImage();
+		ImageIcon InfoButtonMouseOver = new ImageIcon("images/button/설명버튼(마우스 오버).png");
 		
 		exitbt = new JButton(new ImageIcon("images/button/ExitButton.png"));
 		exitbt.setName("ExitButton");
@@ -41,31 +46,70 @@ public class StartPanel extends JPanel{
 		exitbt.addMouseListener((MouseListener) o);
 		add(exitbt);
 		
-		startbt = new JButton(new ImageIcon("images/button/StartButton.png"));
+		startbt = new JButton(new ImageIcon("images/button/플레이버튼.png"));
 		startbt.setName("StartButton");
 		startbt.setBorderPainted(false);
 		startbt.setFocusPainted(false);
 		startbt.setContentAreaFilled(false);
-		startbt.setBounds((view.width/2 - startButton.getWidth(null)/2), 800, startButton.getWidth(null), startButton.getHeight(null));		
+		startbt.setBounds((view.width/2 - startButton.getWidth(null)/2) - 300, 430, startButtonMouseOver.getImage().getWidth(null), startButtonMouseOver.getImage().getHeight(null));		
 		startbt.addMouseListener((MouseListener) o);
+		startbt.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				startbt.setIcon(startButtonMouseOver);
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				startbt.setIcon(new ImageIcon("images/button/플레이버튼.png"));
+			}
+		});
 		add(startbt);
 		
-		rankbt = new JButton(new ImageIcon("images/button/RankButton.png"));
+		rankbt = new JButton(new ImageIcon("images/button/랭킹버튼.png"));
 		rankbt.setName("RankingButton");
 		rankbt.setBorderPainted(false);
 		rankbt.setFocusPainted(false);
 		rankbt.setContentAreaFilled(false);
-		rankbt.setBounds(1750, 20, rankButton.getWidth(null), rankButton.getHeight(null));
+		rankbt.setBounds((view.width/2 - startButton.getWidth(null)/2) + 300, 430, rankButtonMouseOver.getImage().getWidth(null), rankButtonMouseOver.getImage().getHeight(null));
 		rankbt.addMouseListener((MouseListener) o);
+		rankbt.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				rankbt.setIcon(rankButtonMouseOver);
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				rankbt.setIcon(new ImageIcon("images/button/랭킹버튼.png"));
+			}
+		});
 		add(rankbt);
 		
-		infobt = new JButton(new ImageIcon("images/button/InfoButton.png"));
+		infobt = new JButton(new ImageIcon("images/button/설명버튼.png"));
 		infobt.setName("InfoButton");
 		infobt.setBorderPainted(false);
 		infobt.setFocusPainted(false);
 		infobt.setContentAreaFilled(false);
-		infobt.setBounds((view.width/2 - InfoButton.getWidth(null)/2), 680, InfoButton.getWidth(null), InfoButton.getHeight(null));
+		infobt.setBounds((view.width/2 - InfoButton.getWidth(null)/2), 430, InfoButtonMouseOver.getImage().getWidth(null), InfoButtonMouseOver.getImage().getHeight(null));
 		infobt.addMouseListener((MouseListener) o);
+		infobt.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				infobt.setIcon(InfoButtonMouseOver);
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				infobt.setIcon(new ImageIcon("images/button/설명버튼.png"));
+			}
+		});
 		add(infobt);
 		
 		playMusic();

@@ -37,18 +37,19 @@ public class Player {
 	
 	private Dimension view = Toolkit.getDefaultToolkit().getScreenSize();
 	
-	private Image images[] = {new ImageIcon("images/Player/Player1.png").getImage()
-			,new ImageIcon("images/Player/Player1.png").getImage()
-			,new ImageIcon("images/Player/Player1.png").getImage()
-			,new ImageIcon("images/Player/Player2.png").getImage()
-			,new ImageIcon("images/Player/Player2.png").getImage()
-			,new ImageIcon("images/Player/Player2.png").getImage()
-			,new ImageIcon("images/Player/Player3.png").getImage()
-			,new ImageIcon("images/Player/Player3.png").getImage()
-			,new ImageIcon("images/Player/Player3.png").getImage()
-			,new ImageIcon("images/Player/Player4.png").getImage()
-			,new ImageIcon("images/Player/Player4.png").getImage()
-			,new ImageIcon("images/Player/Player4.png").getImage()};
+	private Image images[] = {new ImageIcon("images/Player/신입생/신입생.png").getImage()
+			,new ImageIcon("images/Player/신입생/신입생.png").getImage()
+			,new ImageIcon("images/Player/신입생/신입생2.png").getImage()
+			,new ImageIcon("images/Player/신입생/신입생2.png").getImage()
+			,new ImageIcon("images/Player/신입생/신입생.png").getImage()
+			,new ImageIcon("images/Player/신입생/신입생.png").getImage()
+			,new ImageIcon("images/Player/신입생/신입생2.png").getImage()
+			,new ImageIcon("images/Player/신입생/신입생2.png").getImage()
+			,new ImageIcon("images/Player/신입생/신입생.png").getImage()
+			,new ImageIcon("images/Player/신입생/신입생.png").getImage()
+			,new ImageIcon("images/Player/신입생/신입생2.png").getImage()
+			,new ImageIcon("images/Player/신입생/신입생2.png").getImage()};
+
 	
 	private Image imagesLeft[] = {new ImageIcon("images/Player/PlayerLeft1.png").getImage()
 			,new ImageIcon("images/Player/PlayerLeft1.png").getImage()
@@ -189,12 +190,14 @@ public class Player {
 		if(cnt == images.length) {
 			cnt = 0;
 		}
-		setImage(images[cnt]);
+		if(!isJump()) {
+			setImage(images[cnt]);
+		}
 		cnt++;
 		if(distance < back.getWidth(null)-130) {
 			x += 15;
 			distance += 15;
-		}		
+		}	
 	}
 	
 	// 화면 중간에서 오른쪽 이동(key)
@@ -203,8 +206,9 @@ public class Player {
 		if(cnt == images.length) {
 			cnt = 0;
 		}
-		setImage(images[cnt]);
-		cnt++;
+		if(!isJump()) {
+			setImage(images[cnt]);	
+		}		cnt++;
 		distance += 10;
 	}
 	
@@ -284,6 +288,7 @@ public class Player {
 		new Thread(new Runnable() {
 			@Override
 			public void run() {
+
 				while (true) {
 					int foot = getY() + image.getHeight(null); // 캐릭터 발 위치 재스캔
 
@@ -293,6 +298,7 @@ public class Player {
 							&& !isFall()) { // 떨어지는 중이 아닐 때
 						
 						setFall(true); // 떨어지는 중으로 전환
+
 						long t1 = Util.getTime(); // 현재시간을 가져온다
 						long t2;
 						int set = 1; // 처음 낙하량 (0~10) 까지 테스트해보자
@@ -340,7 +346,9 @@ public class Player {
 				long t2;
 				int set = 12; // 점프 계수 설정(0~20) 등으로 바꿔보자
 				int jumpY = 1; // 1이상으로만 설정하면 된다.(while문 조건 때문)
+				setImage((new ImageIcon("images/Player/신입생/신입생_점프.png").getImage()) );
 				while (jumpY >= 0) { // 상승 높이가 0일때까지 반복
+					
 					t2 = Util.getTime() - t1; // 지금 시간에서 t1을 뺀다
 					jumpY = set - (int) ((t2) / 40); // jumpY 를 세팅한다.
 					setY(getY() - jumpY); // Y값을 변경한다.
@@ -380,12 +388,14 @@ public class Player {
 	public Player(JPanel main){
 		this.mainPanel = main;
 		setX(200);
-		setY(600);
+		setY(100);
 		setDistance(200);
 		setScore(0);
 		setInvincibility(255);
 		setStatus(1);
 		shots.clear();
-		setImage(new ImageIcon("images/Player/Player1.png").getImage());
+		//setImage(new ImageIcon("images/Player/Player1.png").getImage());
+		setImage(new ImageIcon("images/Player/신입생/신입생.png").getImage());
+		
 	}
 }

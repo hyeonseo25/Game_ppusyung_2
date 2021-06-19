@@ -69,7 +69,7 @@ public class Main extends ListenerAdapter{
 	
 	private void init() {
 		frame = new JFrame();
-		frame.setTitle("뿌슝뿌슝"); // 프로그램 이름 지정
+		frame.setTitle("미림봉기"); // 프로그램 이름 지정
 		frame.setUndecorated(true); // 상단 줄 없애기
 		frame.setVisible(true); // 창 보이게하기
 		frame.setExtendedState(JFrame.MAXIMIZED_BOTH); // 전체화면

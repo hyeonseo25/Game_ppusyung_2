@@ -12,18 +12,18 @@ import javax.swing.JPanel;
 public class InfoPanel extends JPanel{
 	private JButton replaybt;
 	
-	private ImageIcon backImg = new ImageIcon("images/설명패널배경.png");
+	private ImageIcon backImg = new ImageIcon("images/설명 팝업.png");
 	private Image back = backImg.getImage();
 
 	public InfoPanel(Object o) {
-		Image exitButton = new ImageIcon("images/button/ArrowButton.png").getImage();
+		Image exitButton = new ImageIcon("images/button/X버튼.png").getImage();
 		
 		replaybt = new JButton(new ImageIcon(exitButton));
 		replaybt.setName("ReplayButton");
 		replaybt.setBorderPainted(false);
 		replaybt.setFocusPainted(false);
 		replaybt.setContentAreaFilled(false);
-		replaybt.setBounds(20, 20, exitButton.getWidth(null), exitButton.getHeight(null));
+		replaybt.setBounds(1630, 100, exitButton.getWidth(null), exitButton.getHeight(null));
 		replaybt.addMouseListener((MouseListener) o);
 		add(replaybt);
 		

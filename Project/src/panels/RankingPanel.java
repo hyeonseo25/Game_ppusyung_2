@@ -28,7 +28,7 @@ public class RankingPanel extends JPanel implements MouseListener{
 	
 	private Image oneStageRangking = new ImageIcon("images/·©Å·ÆÐ³Î¹è°æ.png").getImage();
 	
-	private ImageIcon backImg = new ImageIcon("images/rangking123.png");
+	private ImageIcon backImg = new ImageIcon("images/·©Å·1.png");
 	private Image back = backImg.getImage();
 	
 	private int x1 = oneStageRangking.getWidth(null) - 150;
@@ -117,11 +117,8 @@ public class RankingPanel extends JPanel implements MouseListener{
 		String sql3 = "select * from user where stage = 3 order by score DESC";
 		try {
 			db.rs = db.stmt.executeQuery(sql1);
-			System.out.println("DBDBDB");
 			int i = 0;
 			while(db.rs.next() && i < 10) {
-				System.out.println("name " + db.rs.getString("name"));
-
 				stage1Name[i] = db.rs.getString("name");
 				stage1Score[i] = db.rs.getString("score");			
 				i++;
@@ -152,7 +149,6 @@ public class RankingPanel extends JPanel implements MouseListener{
 
 			list.add(stage3Name);
 			list.add(stage3Score);
-			System.out.println("list.get(0)" + list.get(0));
 			
 			return list;
 		}catch(Exception e) {
