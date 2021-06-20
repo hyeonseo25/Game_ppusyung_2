@@ -17,7 +17,7 @@ import javax.swing.JPanel;
 public class GameOverPanel extends JPanel{
 	private JButton replaybt;
 	
-	private ImageIcon backImg = new ImageIcon("images/게임디자인게임오버.png");
+	private ImageIcon backImg = new ImageIcon("images/게임오버패널배경.png");
 	private Image back = backImg.getImage();
 	
 	private Clip backgroundMusic;
