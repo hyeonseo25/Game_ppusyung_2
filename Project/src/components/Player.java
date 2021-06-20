@@ -29,6 +29,7 @@ public class Player {
 	private int cnt = 0; // 현재 캐릭터 이미지 설정하는 계수
 	private boolean fall = false; // 낙하 여부
 	private boolean jump = false; // 점프 여부
+	private int stage;
 	private int countJump = 0;
 	private int field = 900;
 	
@@ -63,6 +64,9 @@ public class Player {
 			,new ImageIcon("images/Player/신입생/신입생_left.png").getImage()
 			,new ImageIcon("images/Player/신입생/신입생_left.png").getImage()
 			,new ImageIcon("images/Player/신입생/신입생2_left.png").getImage()};
+	
+	private ImageIcon jumpImg = new ImageIcon("images/Player/신입생/신입생_점프.png");
+	private ImageIcon jumpImgLeft = new ImageIcon("images/Player/신입생/신입생_점프_left.png");
 	
 	public boolean isFall() {
 		return fall;
@@ -168,13 +172,139 @@ public class Player {
 		this.image = imageIcon;
 	}
 	
+	public void setImages(int stage) {
+		this.stage = stage;
+		switch (stage) {
+		case 1:
+			Image images[] = {new ImageIcon("images/Player/신입생/신입생2.png").getImage()
+					,new ImageIcon("images/Player/신입생/신입생.png").getImage()
+					,new ImageIcon("images/Player/신입생/신입생.png").getImage()
+					,new ImageIcon("images/Player/신입생/신입생2.png").getImage()
+					,new ImageIcon("images/Player/신입생/신입생2.png").getImage()
+					,new ImageIcon("images/Player/신입생/신입생2.png").getImage()
+					,new ImageIcon("images/Player/신입생/신입생.png").getImage()
+					,new ImageIcon("images/Player/신입생/신입생.png").getImage()
+					,new ImageIcon("images/Player/신입생/신입생2.png").getImage()
+					,new ImageIcon("images/Player/신입생/신입생2.png").getImage()
+					,new ImageIcon("images/Player/신입생/신입생2.png").getImage()
+					,new ImageIcon("images/Player/신입생/신입생.png").getImage()
+					,new ImageIcon("images/Player/신입생/신입생.png").getImage()
+					,new ImageIcon("images/Player/신입생/신입생2.png").getImage()
+					,new ImageIcon("images/Player/신입생/신입생2.png").getImage()};
+			this.images = images;
+			
+			Image imagesLeft[] = {new ImageIcon("images/Player/신입생/신입생2_left.png").getImage()
+					,new ImageIcon("images/Player/신입생/신입생_left.png").getImage()
+					,new ImageIcon("images/Player/신입생/신입생_left.png").getImage()
+					,new ImageIcon("images/Player/신입생/신입생2_left.png").getImage()
+					,new ImageIcon("images/Player/신입생/신입생2_left.png").getImage()
+					,new ImageIcon("images/Player/신입생/신입생2_left.png").getImage()
+					,new ImageIcon("images/Player/신입생/신입생_left.png").getImage()
+					,new ImageIcon("images/Player/신입생/신입생_left.png").getImage()
+					,new ImageIcon("images/Player/신입생/신입생2_left.png").getImage()
+					,new ImageIcon("images/Player/신입생/신입생2_left.png").getImage()
+					,new ImageIcon("images/Player/신입생/신입생2_left.png").getImage()
+					,new ImageIcon("images/Player/신입생/신입생_left.png").getImage()
+					,new ImageIcon("images/Player/신입생/신입생_left.png").getImage()
+					,new ImageIcon("images/Player/신입생/신입생2_left.png").getImage()
+					,new ImageIcon("images/Player/신입생/신입생2_left.png").getImage()};
+			this.imagesLeft = imagesLeft;
+			
+			jumpImg = new ImageIcon("images/Player/신입생/신입생_점프.png");
+			jumpImgLeft = new ImageIcon("images/Player/신입생/신입생_점프_left.png");
+			break;
+		case 2:
+			Image images2[] = {new ImageIcon("images/Player/3학년/3학년2.png").getImage()
+					,new ImageIcon("images/Player/3학년/3학년.png").getImage()
+					,new ImageIcon("images/Player/3학년/3학년.png").getImage()
+					,new ImageIcon("images/Player/3학년/3학년2.png").getImage()
+					,new ImageIcon("images/Player/3학년/3학년2.png").getImage()
+					,new ImageIcon("images/Player/3학년/3학년2.png").getImage()
+					,new ImageIcon("images/Player/3학년/3학년.png").getImage()
+					,new ImageIcon("images/Player/3학년/3학년.png").getImage()
+					,new ImageIcon("images/Player/3학년/3학년2.png").getImage()
+					,new ImageIcon("images/Player/3학년/3학년2.png").getImage()
+					,new ImageIcon("images/Player/3학년/3학년2.png").getImage()
+					,new ImageIcon("images/Player/3학년/3학년.png").getImage()
+					,new ImageIcon("images/Player/3학년/3학년.png").getImage()
+					,new ImageIcon("images/Player/3학년/3학년2.png").getImage()
+					,new ImageIcon("images/Player/3학년/3학년2.png").getImage()};
+			this.images = images2;
+			
+			Image imagesLeft2[] = {new ImageIcon("images/Player/3학년/3학년2_left.png").getImage()
+					,new ImageIcon("images/Player/3학년/3학년_left.png").getImage()
+					,new ImageIcon("images/Player/3학년/3학년_left.png").getImage()
+					,new ImageIcon("images/Player/3학년/3학년2_left.png").getImage()
+					,new ImageIcon("images/Player/3학년/3학년2_left.png").getImage()
+					,new ImageIcon("images/Player/3학년/3학년2_left.png").getImage()
+					,new ImageIcon("images/Player/3학년/3학년_left.png").getImage()
+					,new ImageIcon("images/Player/3학년/3학년_left.png").getImage()
+					,new ImageIcon("images/Player/3학년/3학년2_left.png").getImage()
+					,new ImageIcon("images/Player/3학년/3학년2_left.png").getImage()
+					,new ImageIcon("images/Player/3학년/3학년2_left.png").getImage()
+					,new ImageIcon("images/Player/3학년/3학년_left.png").getImage()
+					,new ImageIcon("images/Player/3학년/3학년_left.png").getImage()
+					,new ImageIcon("images/Player/3학년/3학년2_left.png").getImage()
+					,new ImageIcon("images/Player/3학년/3학년2_left.png").getImage()};
+			this.imagesLeft = imagesLeft2;
+			
+			jumpImg = new ImageIcon("images/Player/3학년/3학년_점프.png");
+			jumpImgLeft = new ImageIcon("images/Player/3학년/3학년_점프_left.png");
+			break;
+		case 3:
+			Image images3[] = {new ImageIcon("images/Player/직장인/직장인2.png").getImage()
+					,new ImageIcon("images/Player/직장인/직장인.png").getImage()
+					,new ImageIcon("images/Player/직장인/직장인.png").getImage()
+					,new ImageIcon("images/Player/직장인/직장인2.png").getImage()
+					,new ImageIcon("images/Player/직장인/직장인2.png").getImage()
+					,new ImageIcon("images/Player/직장인/직장인2.png").getImage()
+					,new ImageIcon("images/Player/직장인/직장인.png").getImage()
+					,new ImageIcon("images/Player/직장인/직장인.png").getImage()
+					,new ImageIcon("images/Player/직장인/직장인2.png").getImage()
+					,new ImageIcon("images/Player/직장인/직장인2.png").getImage()
+					,new ImageIcon("images/Player/직장인/직장인2.png").getImage()
+					,new ImageIcon("images/Player/직장인/직장인.png").getImage()
+					,new ImageIcon("images/Player/직장인/직장인.png").getImage()
+					,new ImageIcon("images/Player/직장인/직장인2.png").getImage()
+					,new ImageIcon("images/Player/직장인/직장인2.png").getImage()};
+			this.images = images3;
+			
+			Image imagesLeft3[] = {new ImageIcon("images/Player/직장인/직장인2_left.png").getImage()
+					,new ImageIcon("images/Player/직장인/직장인_left.png").getImage()
+					,new ImageIcon("images/Player/직장인/직장인_left.png").getImage()
+					,new ImageIcon("images/Player/직장인/직장인2_left.png").getImage()
+					,new ImageIcon("images/Player/직장인/직장인2_left.png").getImage()
+					,new ImageIcon("images/Player/직장인/직장인2_left.png").getImage()
+					,new ImageIcon("images/Player/직장인/직장인_left.png").getImage()
+					,new ImageIcon("images/Player/직장인/직장인_left.png").getImage()
+					,new ImageIcon("images/Player/직장인/직장인2_left.png").getImage()
+					,new ImageIcon("images/Player/직장인/직장인2_left.png").getImage()
+					,new ImageIcon("images/Player/직장인/직장인2_left.png").getImage()
+					,new ImageIcon("images/Player/직장인/직장인_left.png").getImage()
+					,new ImageIcon("images/Player/직장인/직장인_left.png").getImage()
+					,new ImageIcon("images/Player/직장인/직장인2_left.png").getImage()
+					,new ImageIcon("images/Player/직장인/직장인2_left.png").getImage()};
+			this.imagesLeft = imagesLeft3;
+			
+			jumpImg = new ImageIcon("images/Player/직장인/직장인_점프.png");
+			jumpImgLeft = new ImageIcon("images/Player/직장인/직장인_점프_left.png");
+			break;
+		default:
+			break;
+		}
+	}
+	
 	//player 왼쪽으로 이동 (key)
 	public void p_moveLeft() {
 		setStatus(2);
 		if(cnt == imagesLeft.length) {
 			cnt = 0;
 		}
-		setImage(imagesLeft[cnt]);
+		if(isJump()||isFall()) {
+			setImage(jumpImgLeft.getImage());
+		}else {
+			setImage(imagesLeft[cnt]);	
+		}
 		cnt++;
 		if(x > 0) {
 			x -= 15;
@@ -190,7 +320,9 @@ public class Player {
 		if(cnt == images.length) {
 			cnt = 0;
 		}
-		if(!isJump()) {
+		if(isJump()||isFall()) {
+			setImage(jumpImg.getImage());
+		}else {
 			setImage(images[cnt]);
 		}
 		cnt++;
@@ -206,20 +338,29 @@ public class Player {
 		if(cnt == images.length) {
 			cnt = 0;
 		}
-		if(!isJump()) {
+		if(isJump()||isFall()) {
+			setImage(jumpImg.getImage());
+			
+		}else {
 			setImage(images[cnt]);	
-		}		cnt++;
+		}
+		cnt++;
 		distance += 10;
 	}
 	
 	// 멈출때 이미지 변겅
 	public void stop() {
-		cnt = 0;
-		if (status == 1) {
-			setImage(images[cnt]);	
-		}else if (status == 2) {
-			setImage(imagesLeft[cnt]);
-		}	
+		if(isJump()||isFall()) {
+			setImage(jumpImg.getImage());
+		}else {
+			cnt = 0;
+			if (status == 1) {
+				setImage(images[cnt]);	
+			}else if (status == 2) {
+				setImage(imagesLeft[cnt]);
+			}		
+		}
+		
 	}
 	
 	// 총알 발사
@@ -303,6 +444,19 @@ public class Player {
 						long t2;
 						int set = 1; // 처음 낙하량 (0~10) 까지 테스트해보자
 						while (foot < field) { // 발이 발판에 닿기 전까지 반복
+							if(foot > field-10) {
+								setFall(false);
+								switch (status) {
+								case 1:
+									setImage(images[0]);
+									break;
+								case 2:
+									setImage(imagesLeft[0]);
+									break;
+								default:
+									break;
+								}
+							}
 							t2 = Util.getTime() - t1; // 지금 시간에서 t1을 뺀다
 							int fallY = set + (int) ((t2) / 40); // 낙하량을 늘린다.
 							foot = getY() + image.getHeight(null); // 캐릭터 발 위치 재스캔
@@ -320,8 +474,10 @@ public class Player {
 							}
 						}
 						setFall(false);
+						
 						if (!isJump()) { // 발이 땅에 닿고 점프 중이 아닐 때 더블점프 카운트를 0으로 변경
 							setCountJump(0);
+							
 						}
 					}
 					try {
@@ -346,7 +502,17 @@ public class Player {
 				long t2;
 				int set = 12; // 점프 계수 설정(0~20) 등으로 바꿔보자
 				int jumpY = 1; // 1이상으로만 설정하면 된다.(while문 조건 때문)
-				setImage((new ImageIcon("images/Player/신입생/신입생_점프.png").getImage()) );
+				switch (status) {
+				case 1:
+					setImage(jumpImg.getImage());
+					break;
+				case 2:
+					setImage(jumpImgLeft.getImage());
+					break;
+				default:
+					break;
+				}
+				
 				while (jumpY >= 0) { // 상승 높이가 0일때까지 반복
 					
 					t2 = Util.getTime() - t1; // 지금 시간에서 t1을 뺀다
@@ -385,7 +551,7 @@ public class Player {
 		}
 	}
 	
-	public Player(JPanel main){
+	public Player(JPanel main, int stage){
 		this.mainPanel = main;
 		setX(200);
 		setY(100);
@@ -394,8 +560,7 @@ public class Player {
 		setInvincibility(255);
 		setStatus(1);
 		shots.clear();
-		//setImage(new ImageIcon("images/Player/Player1.png").getImage());
-		setImage(new ImageIcon("images/Player/신입생/신입생.png").getImage());
-		
+		setImages(stage);
+		setImage(images[0]);
 	}
 }

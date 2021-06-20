@@ -163,8 +163,7 @@ public class Stage1Panel extends JPanel{
 	public void gameStart() {
 		time = new util.Timer();
 		time.start();
-		player = new Player(this);
-
+		player = new Player(this,1);
 		player.fall(); // field 위에 플레이어가 있으면 떨어지게
 		player.deleteShot(); // 화면 밖으로 나간 총알을 없애는 메서드
 		monster = new Monster(player);
