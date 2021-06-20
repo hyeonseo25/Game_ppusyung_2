@@ -336,11 +336,9 @@ public class Stage1Panel extends JPanel{
 		}
 		
 		if(keyEnter==true) {
-			if(cnt==5) {
-				if(!player.isHit()) {
-					Sound("music/shotSound.wav", false); // 총쏘는 소리
-					player.p_hit();
-				}
+			if(!player.isHit()) {
+				Sound("music/shotSound.wav", false); // 총쏘는 소리
+				player.p_hit();
 			}
 		}
 	}
@@ -532,7 +530,7 @@ public class Stage1Panel extends JPanel{
 		// 발판위치를 -10 씩 해준다. (왼쪽으로 흐르는 효과)
 		for (int i = 0; i < fieldList.size(); i++) {
 			Field tempField = fieldList.get(i); // 임시 변수에 리스트 안에 있는 개별 발판을 불러오자
-			if (tempField.getX() < -150) { // 발판의 x좌표가 -120 미만이면 해당 발판을 제거한다.(최적화)
+			if (tempField.getX() < -150) { // 발판의 x좌표가 -150 미만이면 해당 발판을 제거한다.(최적화)
 				fieldList.remove(tempField);
 			} else {
 				tempField.setX(tempField.getX() - 10); // 위 조건에 해당이 안되면 x좌표를 줄이자

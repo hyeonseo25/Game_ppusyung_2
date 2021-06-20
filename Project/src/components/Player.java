@@ -298,6 +298,15 @@ public class Player {
 			
 			jumpImg[0] = new ImageIcon("images/Player/3학년/3학년_점프.png");
 			jumpImg[1] = new ImageIcon("images/Player/3학년/3학년_점프_left.png");
+			
+			ImageIcon hitImg2[][] = {
+					{new ImageIcon("images/Player/3학년/3학년_총쏘기.png"), new ImageIcon("images/Player/3학년/3학년_총쏘기_left.png")},
+					{new ImageIcon("images/Player/3학년/3학년_활당기기.png"), new ImageIcon("images/Player/3학년/3학년_활당기기_left.png")},
+					{new ImageIcon("images/Player/3학년/3학년_단거리 공격.png"), new ImageIcon("images/Player/3학년/3학년_단거리 공격_left.png")}};
+			this.hitImg = hitImg2;
+			
+			afterHitImg[0] = new ImageIcon("images/Player/3학년/3학년_활쏘기.png");
+			afterHitImg[1] = new ImageIcon("images/Player/3학년/3학년_활쏘기_left.png");
 			break;
 		case 3:
 			Image images3[] = {new ImageIcon("images/Player/직장인/직장인.png").getImage()
@@ -336,6 +345,15 @@ public class Player {
 			
 			jumpImg[0] = new ImageIcon("images/Player/직장인/직장인_점프.png");
 			jumpImg[1] = new ImageIcon("images/Player/직장인/직장인_점프_left.png");
+			
+			ImageIcon hitImg3[][] = {
+					{new ImageIcon("images/Player/직장인/직장인_총쏘기.png"), new ImageIcon("images/Player/직장인/직장인_총쏘기_left.png")},
+					{new ImageIcon("images/Player/직장인/직장인_활당기기.png"), new ImageIcon("images/Player/직장인/직장인_활당기기_left.png")},
+					{new ImageIcon("images/Player/직장인/직장인_단거리 공격.png"), new ImageIcon("images/Player/직장인/직장인_단거리 공격_left.png")}};
+			this.hitImg = hitImg3;
+			
+			afterHitImg[0] = new ImageIcon("images/Player/직장인/직장인_활쏘기.png");
+			afterHitImg[1] = new ImageIcon("images/Player/직장인/직장인_활쏘기_left.png");
 			break;
 		default:
 			break;
