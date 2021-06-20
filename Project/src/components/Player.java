@@ -51,18 +51,18 @@ public class Player {
 			,new ImageIcon("images/Player/신입생/신입생2.png").getImage()};
 
 	
-	private Image imagesLeft[] = {new ImageIcon("images/Player/PlayerLeft1.png").getImage()
-			,new ImageIcon("images/Player/PlayerLeft1.png").getImage()
-			,new ImageIcon("images/Player/PlayerLeft1.png").getImage()
-			,new ImageIcon("images/Player/PlayerLeft2.png").getImage()
-			,new ImageIcon("images/Player/PlayerLeft2.png").getImage()
-			,new ImageIcon("images/Player/PlayerLeft2.png").getImage()
-			,new ImageIcon("images/Player/PlayerLeft3.png").getImage()
-			,new ImageIcon("images/Player/PlayerLeft3.png").getImage()
-			,new ImageIcon("images/Player/PlayerLeft3.png").getImage()
-			,new ImageIcon("images/Player/PlayerLeft4.png").getImage()
-			,new ImageIcon("images/Player/PlayerLeft4.png").getImage()
-			,new ImageIcon("images/Player/PlayerLeft4.png").getImage()};
+	private Image imagesLeft[] = {new ImageIcon("images/Player/신입생/신입생_left.png").getImage()
+			,new ImageIcon("images/Player/신입생/신입생_left.png").getImage()
+			,new ImageIcon("images/Player/신입생/신입생2_left.png").getImage()
+			,new ImageIcon("images/Player/신입생/신입생2_left.png").getImage()
+			,new ImageIcon("images/Player/신입생/신입생_left.png").getImage()
+			,new ImageIcon("images/Player/신입생/신입생_left.png").getImage()
+			,new ImageIcon("images/Player/신입생/신입생2_left.png").getImage()
+			,new ImageIcon("images/Player/신입생/신입생2_left.png").getImage()
+			,new ImageIcon("images/Player/신입생/신입생2_left.png").getImage()
+			,new ImageIcon("images/Player/신입생/신입생_left.png").getImage()
+			,new ImageIcon("images/Player/신입생/신입생_left.png").getImage()
+			,new ImageIcon("images/Player/신입생/신입생2_left.png").getImage()};
 	
 	public boolean isFall() {
 		return fall;
@@ -216,7 +216,7 @@ public class Player {
 	public void stop() {
 		cnt = 0;
 		if (status == 1) {
-			setImage(images[cnt]);
+			setImage(images[cnt]);	
 		}else if (status == 2) {
 			setImage(imagesLeft[cnt]);
 		}	

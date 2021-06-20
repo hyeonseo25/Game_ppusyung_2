@@ -15,7 +15,10 @@ import javax.swing.JPanel;
 import util.DBConnection;
 
 public class RankingPanel extends JPanel implements MouseListener{
-	private JButton replaybt;
+	private JButton exitbt1;
+	private JButton exitbt2;
+	private JButton exitbt3;
+
 	private JButton arrowbt1;
 	private JButton arrowbt2;
 	private JButton arrowbt3;
@@ -35,21 +38,49 @@ public class RankingPanel extends JPanel implements MouseListener{
 	private int x2 = oneStageRangking.getWidth(null) + 20;
 	private int x3 = 2*oneStageRangking.getWidth(null) - 150;
 	private int x4 = 2*oneStageRangking.getWidth(null) + 20;
+	private int bt1_x = 1500;
+	private int bt2_x = oneStageRangking.getWidth(null) + 1500;
+	private int bt3_x = 2*(oneStageRangking.getWidth(null)) + 1500;
+
 
 
 	public RankingPanel(Object o) {
 		
 		
-		Image exitButton = new ImageIcon("images/button/ArrowButton.png").getImage();
+		Image exitButton = new ImageIcon("images/button/X버튼.png").getImage();
 		
-		replaybt = new JButton(new ImageIcon(exitButton));
-		replaybt.setName("ReplayButton");
-		replaybt.setBorderPainted(false);
-		replaybt.setFocusPainted(false);
-		replaybt.setContentAreaFilled(false);
-		replaybt.setBounds(20, 20, exitButton.getWidth(null), exitButton.getHeight(null));
-		replaybt.addMouseListener((MouseListener) o);
-		add(replaybt);
+		exitbt1 = new JButton(new ImageIcon(exitButton));
+		exitbt1.setName("ReplayButton");
+		exitbt1.setBorderPainted(false);
+		exitbt1.setFocusPainted(false);
+		exitbt1.setContentAreaFilled(false);
+		exitbt1.setBounds(1500, 100, exitButton.getWidth(null), exitButton.getHeight(null));
+		exitbt1.addMouseListener((MouseListener) o);
+		add(exitbt1);
+		
+		exitbt2 = new JButton(new ImageIcon(exitButton));
+		exitbt2.setName("ReplayButton");
+		exitbt2.setBorderPainted(false);
+		exitbt2.setFocusPainted(false);
+		exitbt2.setContentAreaFilled(false);
+		exitbt2.setBounds(oneStageRangking.getWidth(null) + 1500, 100, exitButton.getWidth(null), exitButton.getHeight(null));
+		exitbt2.addMouseListener((MouseListener) o);
+		add(exitbt2);
+		
+		exitbt3 = new JButton(new ImageIcon(exitButton));
+		exitbt3.setName("ReplayButton");
+		exitbt3.setBorderPainted(false);
+		exitbt3.setFocusPainted(false);
+		exitbt3.setContentAreaFilled(false);
+		exitbt3.setBounds(2*(oneStageRangking.getWidth(null)) + 1500, 100, exitButton.getWidth(null), exitButton.getHeight(null));
+		exitbt3.addMouseListener((MouseListener) o);
+		add(exitbt3);
+		
+		
+		
+		
+		
+		
 		
 		Image arrowButton= new ImageIcon("images/button/ArrowButton.png").getImage();
 		
@@ -186,17 +217,23 @@ public class RankingPanel extends JPanel implements MouseListener{
 
 		for (int i = 0; i < 10; i ++) {
 			try {
-				g.drawString(scoreList.get(0)[i], 700 + x, 265 + i * 72);								} catch(Exception e) {}
+				// 1stage 이름 
+				g.drawString(scoreList.get(0)[i], 500 + x + 600 * (i / 5), 325 + (i%5) * 152);								} catch(Exception e) {}
 			try {
-				g.drawString(scoreList.get(1)[i], 1100 + x, 265 + i * 72); 								}catch(Exception e) {}
+				// 1stage 점수
+				g.drawString(scoreList.get(1)[i], 750 + x + 600 * (i / 5), 325 + (i%5) * 152); 								}catch(Exception e) {}
 			try {
-				g.drawString(scoreList.get(2)[i], oneStageRangking.getWidth(null) + 700 + x, 265 + i * 72); }catch(Exception e) {}
+				// 2stage 이름
+				g.drawString(scoreList.get(2)[i], oneStageRangking.getWidth(null) + 510 + x + 600 * (i / 5), 325 + (i%5) * 152); }catch(Exception e) {}
 			try {
-				g.drawString(scoreList.get(3)[i], oneStageRangking.getWidth(null) + 1100 + x, 265 + i * 72); }catch(Exception e) {}
+				// 2stage 점수
+				g.drawString(scoreList.get(3)[i], oneStageRangking.getWidth(null) + 760 + x + 600 * (i / 5), 325 + (i%5) * 152); }catch(Exception e) {}
 			try {
-				g.drawString(scoreList.get(4)[i], 2*oneStageRangking.getWidth(null) + 700 + x, 265 + i * 72); }catch(Exception e) {}
+				// 3stage 이름
+				g.drawString(scoreList.get(4)[i], 2*oneStageRangking.getWidth(null) + 500 + x + 600 * (i / 5), 325 + (i%5) * 152); }catch(Exception e) {}
 			try {
-				g.drawString(scoreList.get(5)[i], 2*oneStageRangking.getWidth(null) + 1100 + x, 265 + i * 72); }catch(Exception e) {}
+				// 3stage 점수
+				g.drawString(scoreList.get(5)[i], 2*oneStageRangking.getWidth(null) + 750 + x + 600 * (i / 5), 325 + (i%5) * 152); }catch(Exception e) {}
 		}
 		
 	}
@@ -214,10 +251,17 @@ public class RankingPanel extends JPanel implements MouseListener{
 							x2 -= 20;
 							x3 -= 20;
 							x4 -= 20;
+							bt1_x -= 20;
+							bt2_x -= 20;
+							bt3_x -= 20;
+							
 							arrowbt1.setLocation(x1, 500);
 							arrowbt2.setLocation(x2, 500);
 							arrowbt3.setLocation(x3, 500);
 							arrowbt4.setLocation(x4, 500);
+							exitbt1.setLocation(bt1_x, 100);
+							exitbt2.setLocation(bt2_x, 100);							
+							exitbt3.setLocation(bt3_x, 100);
 							try {
 								Thread.sleep(10);
 							} catch(Exception e) {
@@ -232,10 +276,16 @@ public class RankingPanel extends JPanel implements MouseListener{
 							x2 += 20;
 							x3 += 20;
 							x4 += 20;
+							bt1_x += 20;
+							bt2_x += 20;
+							bt3_x += 20;
 							arrowbt1.setLocation(x1, 500);
 							arrowbt2.setLocation(x2, 500);
 							arrowbt3.setLocation(x3, 500);
 							arrowbt4.setLocation(x4, 500);
+							exitbt1.setLocation(bt1_x, 100);
+							exitbt2.setLocation(bt2_x, 100);							
+							exitbt3.setLocation(bt3_x, 100);
 							try {
 								Thread.sleep(10);
 							} catch(Exception e) {
@@ -250,10 +300,16 @@ public class RankingPanel extends JPanel implements MouseListener{
 							x2 -= 20;
 							x3 -= 20;
 							x4 -= 20;
+							bt1_x -= 20;
+							bt2_x -= 20;
+							bt3_x -= 20;
 							arrowbt1.setLocation(x1, 500);
 							arrowbt2.setLocation(x2, 500);
 							arrowbt3.setLocation(x3, 500);
 							arrowbt4.setLocation(x4, 500);
+							exitbt1.setLocation(bt1_x, 100);
+							exitbt2.setLocation(bt2_x, 100);							
+							exitbt3.setLocation(bt3_x, 100);
 							try {
 								Thread.sleep(10);
 							} catch(Exception e) {
@@ -268,10 +324,16 @@ public class RankingPanel extends JPanel implements MouseListener{
 							x2 += 20;
 							x3 += 20;
 							x4 += 20;
+							bt1_x += 20;
+							bt2_x += 20;
+							bt3_x += 20;
 							arrowbt1.setLocation(x1, 500);
 							arrowbt2.setLocation(x2, 500);
 							arrowbt3.setLocation(x3, 500);
 							arrowbt4.setLocation(x4, 500);
+							exitbt1.setLocation(bt1_x, 100);
+							exitbt2.setLocation(bt2_x, 100);							
+							exitbt3.setLocation(bt3_x, 100);
 							try {
 								Thread.sleep(10);
 							} catch(Exception e) {
@@ -290,16 +352,12 @@ public class RankingPanel extends JPanel implements MouseListener{
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getComponent().getName().equals("arrowbt1")) {
-			
 			pushBackground(1);
 		} else if(e.getComponent().getName().equals("arrowbt2")) {
-//			x -= oneStageRangking.getWidth(null);
 			pushBackground(2);
 		} else if(e.getComponent().getName().equals("arrowbt3")) {
-//			x += oneStageRangking.getWidth(null);
 			pushBackground(3);
 		}else if(e.getComponent().getName().equals("arrowbt4")) {
-//			x -= oneStageRangking.getWidth(null);
 			pushBackground(4);
 		}
 		
