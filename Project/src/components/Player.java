@@ -214,76 +214,76 @@ public class Player {
 			jumpImgLeft = new ImageIcon("images/Player/신입생/신입생_점프_left.png");
 			break;
 		case 2:
-			Image images2[] = {new ImageIcon("images/Player/3학년/3학년2.png").getImage()
-					,new ImageIcon("images/Player/3학년/3학년.png").getImage()
-					,new ImageIcon("images/Player/3학년/3학년.png").getImage()
-					,new ImageIcon("images/Player/3학년/3학년2.png").getImage()
+			Image images2[] = {new ImageIcon("images/Player/3학년/3학년.png").getImage()
 					,new ImageIcon("images/Player/3학년/3학년2.png").getImage()
 					,new ImageIcon("images/Player/3학년/3학년2.png").getImage()
 					,new ImageIcon("images/Player/3학년/3학년.png").getImage()
 					,new ImageIcon("images/Player/3학년/3학년.png").getImage()
-					,new ImageIcon("images/Player/3학년/3학년2.png").getImage()
+					,new ImageIcon("images/Player/3학년/3학년.png").getImage()
 					,new ImageIcon("images/Player/3학년/3학년2.png").getImage()
 					,new ImageIcon("images/Player/3학년/3학년2.png").getImage()
 					,new ImageIcon("images/Player/3학년/3학년.png").getImage()
 					,new ImageIcon("images/Player/3학년/3학년.png").getImage()
+					,new ImageIcon("images/Player/3학년/3학년.png").getImage()
 					,new ImageIcon("images/Player/3학년/3학년2.png").getImage()
-					,new ImageIcon("images/Player/3학년/3학년2.png").getImage()};
+					,new ImageIcon("images/Player/3학년/3학년2.png").getImage()
+					,new ImageIcon("images/Player/3학년/3학년.png").getImage()
+					,new ImageIcon("images/Player/3학년/3학년.png").getImage()};
 			this.images = images2;
 			
-			Image imagesLeft2[] = {new ImageIcon("images/Player/3학년/3학년2_left.png").getImage()
-					,new ImageIcon("images/Player/3학년/3학년_left.png").getImage()
-					,new ImageIcon("images/Player/3학년/3학년_left.png").getImage()
-					,new ImageIcon("images/Player/3학년/3학년2_left.png").getImage()
+			Image imagesLeft2[] = {new ImageIcon("images/Player/3학년/3학년_left.png").getImage()
 					,new ImageIcon("images/Player/3학년/3학년2_left.png").getImage()
 					,new ImageIcon("images/Player/3학년/3학년2_left.png").getImage()
 					,new ImageIcon("images/Player/3학년/3학년_left.png").getImage()
 					,new ImageIcon("images/Player/3학년/3학년_left.png").getImage()
-					,new ImageIcon("images/Player/3학년/3학년2_left.png").getImage()
+					,new ImageIcon("images/Player/3학년/3학년_left.png").getImage()
 					,new ImageIcon("images/Player/3학년/3학년2_left.png").getImage()
 					,new ImageIcon("images/Player/3학년/3학년2_left.png").getImage()
 					,new ImageIcon("images/Player/3학년/3학년_left.png").getImage()
 					,new ImageIcon("images/Player/3학년/3학년_left.png").getImage()
+					,new ImageIcon("images/Player/3학년/3학년_left.png").getImage()
 					,new ImageIcon("images/Player/3학년/3학년2_left.png").getImage()
-					,new ImageIcon("images/Player/3학년/3학년2_left.png").getImage()};
+					,new ImageIcon("images/Player/3학년/3학년2_left.png").getImage()
+					,new ImageIcon("images/Player/3학년/3학년_left.png").getImage()
+					,new ImageIcon("images/Player/3학년/3학년_left.png").getImage()};
 			this.imagesLeft = imagesLeft2;
 			
 			jumpImg = new ImageIcon("images/Player/3학년/3학년_점프.png");
 			jumpImgLeft = new ImageIcon("images/Player/3학년/3학년_점프_left.png");
 			break;
 		case 3:
-			Image images3[] = {new ImageIcon("images/Player/직장인/직장인2.png").getImage()
-					,new ImageIcon("images/Player/직장인/직장인.png").getImage()
-					,new ImageIcon("images/Player/직장인/직장인.png").getImage()
-					,new ImageIcon("images/Player/직장인/직장인2.png").getImage()
+			Image images3[] = {new ImageIcon("images/Player/직장인/직장인.png").getImage()
 					,new ImageIcon("images/Player/직장인/직장인2.png").getImage()
 					,new ImageIcon("images/Player/직장인/직장인2.png").getImage()
 					,new ImageIcon("images/Player/직장인/직장인.png").getImage()
 					,new ImageIcon("images/Player/직장인/직장인.png").getImage()
-					,new ImageIcon("images/Player/직장인/직장인2.png").getImage()
+					,new ImageIcon("images/Player/직장인/직장인.png").getImage()
 					,new ImageIcon("images/Player/직장인/직장인2.png").getImage()
 					,new ImageIcon("images/Player/직장인/직장인2.png").getImage()
 					,new ImageIcon("images/Player/직장인/직장인.png").getImage()
 					,new ImageIcon("images/Player/직장인/직장인.png").getImage()
+					,new ImageIcon("images/Player/직장인/직장인.png").getImage()
 					,new ImageIcon("images/Player/직장인/직장인2.png").getImage()
-					,new ImageIcon("images/Player/직장인/직장인2.png").getImage()};
+					,new ImageIcon("images/Player/직장인/직장인2.png").getImage()
+					,new ImageIcon("images/Player/직장인/직장인.png").getImage()
+					,new ImageIcon("images/Player/직장인/직장인.png").getImage()};
 			this.images = images3;
 			
-			Image imagesLeft3[] = {new ImageIcon("images/Player/직장인/직장인2_left.png").getImage()
-					,new ImageIcon("images/Player/직장인/직장인_left.png").getImage()
-					,new ImageIcon("images/Player/직장인/직장인_left.png").getImage()
-					,new ImageIcon("images/Player/직장인/직장인2_left.png").getImage()
+			Image imagesLeft3[] = {new ImageIcon("images/Player/직장인/직장인_left.png").getImage()
 					,new ImageIcon("images/Player/직장인/직장인2_left.png").getImage()
 					,new ImageIcon("images/Player/직장인/직장인2_left.png").getImage()
 					,new ImageIcon("images/Player/직장인/직장인_left.png").getImage()
 					,new ImageIcon("images/Player/직장인/직장인_left.png").getImage()
-					,new ImageIcon("images/Player/직장인/직장인2_left.png").getImage()
+					,new ImageIcon("images/Player/직장인/직장인_left.png").getImage()
 					,new ImageIcon("images/Player/직장인/직장인2_left.png").getImage()
 					,new ImageIcon("images/Player/직장인/직장인2_left.png").getImage()
 					,new ImageIcon("images/Player/직장인/직장인_left.png").getImage()
 					,new ImageIcon("images/Player/직장인/직장인_left.png").getImage()
+					,new ImageIcon("images/Player/직장인/직장인_left.png").getImage()
 					,new ImageIcon("images/Player/직장인/직장인2_left.png").getImage()
-					,new ImageIcon("images/Player/직장인/직장인2_left.png").getImage()};
+					,new ImageIcon("images/Player/직장인/직장인2_left.png").getImage()
+					,new ImageIcon("images/Player/직장인/직장인_left.png").getImage()
+					,new ImageIcon("images/Player/직장인/직장인_left.png").getImage()};
 			this.imagesLeft = imagesLeft3;
 			
 			jumpImg = new ImageIcon("images/Player/직장인/직장인_점프.png");
