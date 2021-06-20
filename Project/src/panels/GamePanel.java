@@ -39,7 +39,6 @@ public class GamePanel extends JPanel{
 	private boolean keyLeft = false;
 	private boolean keyRight = false;
 	private boolean keyEnter = false;
-	private int cnt=5; // ÃÑ¾Ë¿¡ µô·¹ÀÌ ÁÖ±â À§ÇÑ cnt
 	
 	//½Ã°£ µÞ ¹è°æ
 	private ImageIcon textBackImage1 = new ImageIcon("images/backImage.png");
@@ -325,10 +324,9 @@ public class GamePanel extends JPanel{
 		}
 		
 		if(keyEnter==true) {
-			if(cnt==5) {
+			if(!player.isHit()) {
 				Sound("music/shotSound.wav", false); // ÃÑ½î´Â ¼Ò¸®
 				player.p_hit();
-				cnt = 0;
 			}
 		}
 	}
@@ -345,9 +343,6 @@ public class GamePanel extends JPanel{
 					try {
 						keyCheck();
 						setObject();
-						if(cnt<5) {
-							cnt++; // ÃÑ¾Ë¿¡ µô·¹ÀÌ
-						}
 						
 						if(player.getY() - player.getImage().getHeight(null)>1100) {
 							player.setHp(0);
