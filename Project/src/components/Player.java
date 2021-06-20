@@ -23,6 +23,7 @@ public class Player {
 	private int hp = 1000; // 체력
 	private int status; // 캐릭터가 바라보는 방향 : 1=오른쪽, 2=왼쪽
 	private int hit_status=1; // 공격상태 : 1=총, 2=활, 3=근접
+	private int shot_range = 800; // 이미지 투명도
 	private int invincibility = 255; // 이미지 투명도
 	private int score = 0; // 점수
 	private Image image;
@@ -113,7 +114,14 @@ public class Player {
 	public int getCountJump() {
 		return countJump;
 	}
-	
+	public int getShot_range() {
+		return shot_range;
+	}
+
+	public void setShot_range(int shot_range) {
+		this.shot_range = shot_range;
+	}
+
 	public void setCountJump(int countJump) {
 		this.countJump = countJump;
 	}
@@ -187,6 +195,11 @@ public class Player {
 	}
 	
 	public void setHit_status(int hit_status) {
+		if(hit_status==1) {
+			setShot_range(800);
+		}else if(hit_status==2) {
+			setShot_range(1400);
+		}
 		this.hit_status = hit_status;
 	}
 	
@@ -415,7 +428,7 @@ public class Player {
 					try {
 						setHit(true);
 						setImage(hitImg[hit_status-1][status-1].getImage());
-						shots.add(new Shot(mainPanel, x+50, y+15, status));
+						shots.add(new Shot(mainPanel, x+50, y+15, status,1));
 						Thread.sleep(100);
 						if(status==1) {
 							setImage(images[0]);
@@ -438,7 +451,7 @@ public class Player {
 						setHit(true);
 						setImage(hitImg[hit_status-1][status-1].getImage());
 						Thread.sleep(200);
-						shots.add(new Shot(mainPanel, x+50, y+15, status));
+						shots.add(new Shot(mainPanel, x+50, y+15, status,2));
 						setImage(afterHitImg[status-1].getImage());
 						Thread.sleep(100);
 						if(status==1) {
@@ -518,7 +531,8 @@ public class Player {
 				while(true) {
 					for(int i = 0; i < shots.size(); i++) {
 						try {
-							if(shots.get(i).getX()>view.getWidth()-100 || shots.get(i).getX()<0||shots.get(i).getX()>getX()+800||shots.get(i).getX()<getX()-800) {
+							if(shots.get(i).getX()>view.getWidth()-100 || shots.get(i).getX()<0
+									||shots.get(i).getX()>getX()+getShot_range()||shots.get(i).getX()<getX()-getShot_range()) {
 								shots.remove(i); //맞은 총알 삭제
 							}
 						}catch (IndexOutOfBoundsException e) {

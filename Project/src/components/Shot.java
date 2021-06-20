@@ -9,14 +9,25 @@ public class Shot {
 	private int x;
 	private int y;
 	private int shot_direction;
+	private int shot_type;
 	private int speed=50;
 	private Image image;
 	
-	public Shot(JPanel main, int x, int y, int status) { //status 1:¿À¸¥ÂÊÀ¸·Î, 2:¿ÞÂÊÀ¸·Î ÃÑ¾Ë ÀÌµ¿
-		this.x = x+20;
-		this.y = y+70;
+	private ImageIcon shotImg[][] = {
+			{new ImageIcon("images/ÃÑ¾Ë_ÃÑ¾Ë.png"), new ImageIcon("images/ÃÑ¾Ë_ÃÑ¾Ë_left.png")},
+			{new ImageIcon("images/ÃÑ¾Ë_»ì.png"), new ImageIcon("images/ÃÑ¾Ë_»ì_left.png")}};
+	
+	
+	public Shot(JPanel main, int x, int y, int status, int shot_type) { //status 1:¿À¸¥ÂÊÀ¸·Î, 2:¿ÞÂÊÀ¸·Î ÃÑ¾Ë ÀÌµ¿
+		if(shot_type==1) {
+			this.x = x+60;
+			this.y = y+80;
+		}else {
+			this.x = x+25;
+			this.y = y+75;
+		}
 		setShot_direction(status);
-		setImage(new ImageIcon("images/ÃÑ¾Ë.png").getImage());
+		setImage(shotImg[shot_type-1][status-1].getImage());
 		s_move();
 	}
 	
