@@ -227,7 +227,7 @@ public class Stage1Panel extends JPanel{
 			for (int j = 0; j < maxY; j += 2) {
 				if (colorArr[i][j] == 0) { // 색값이 0 일경우 (검은색)
 					// 좌표에 40을 곱하고, 넓이와 높이는 80,100으로 한다.
-					fieldList.add(new Field(field1Ic.getImage(), i * 70 , j * 40, 140, 395));
+					fieldList.add(new Field(field1Ic.getImage(), i * 40 , j * 40, 140, 395));
 
 				} else if (colorArr[i][j] == 12829635) { // 색값이 12829635 일경우 (회색)
 					// 좌표에 40을 곱하고, 넓이와 높이는 80으로 한다.
@@ -303,6 +303,13 @@ public class Stage1Panel extends JPanel{
 				case KeyEvent.VK_A: keyLeft = false; player.stop();break;
 				case KeyEvent.VK_D: keyRight = false;  player.stop();break;
 				case KeyEvent.VK_ENTER: keyEnter = false; break;
+				case KeyEvent.VK_SHIFT: 
+					if(player.getHit_status()!=3) {
+						player.setHit_status(player.getHit_status()+1);
+					}else {
+						player.setHit_status(1);
+					}
+					break;
 				}
 			}
 		});
@@ -330,9 +337,10 @@ public class Stage1Panel extends JPanel{
 		
 		if(keyEnter==true) {
 			if(cnt==5) {
-				Sound("music/shotSound.wav", false); // 총쏘는 소리
-				player.p_hit();
-				cnt = 0;
+				if(!player.isHit()) {
+					Sound("music/shotSound.wav", false); // 총쏘는 소리
+					player.p_hit();
+				}
 			}
 		}
 	}

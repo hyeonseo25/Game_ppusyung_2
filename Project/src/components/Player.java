@@ -22,6 +22,7 @@ public class Player {
 	private int distance = 200; // 캐릭터가 이동한 총 거리
 	private int hp = 1000; // 체력
 	private int status; // 캐릭터가 바라보는 방향 : 1=오른쪽, 2=왼쪽
+	private int hit_status=1; // 공격상태 : 1=총, 2=활, 3=근접
 	private int invincibility = 255; // 이미지 투명도
 	private int score = 0; // 점수
 	private Image image;
@@ -29,6 +30,7 @@ public class Player {
 	private int cnt = 0; // 현재 캐릭터 이미지 설정하는 계수            
 	private boolean fall = false; // 낙하 여부
 	private boolean jump = false; // 점프 여부
+	private boolean hit = false; // 점프 여부
 	private int stage;
 	private int countJump = 0;
 	private int field = 900;
@@ -65,8 +67,16 @@ public class Player {
 			,new ImageIcon("images/Player/신입생/신입생_left.png").getImage()
 			,new ImageIcon("images/Player/신입생/신입생2_left.png").getImage()};
 	
-	private ImageIcon jumpImg = new ImageIcon("images/Player/신입생/신입생_점프.png");
-	private ImageIcon jumpImgLeft = new ImageIcon("images/Player/신입생/신입생_점프_left.png");
+	private ImageIcon jumpImg[] = {new ImageIcon("images/Player/신입생/신입생_점프.png"),
+			new ImageIcon("images/Player/신입생/신입생_점프_left.png")};
+	
+	private ImageIcon hitImg[][] = {
+			{new ImageIcon("images/Player/신입생/신입생총.png"), new ImageIcon("images/Player/신입생/신입생총_left.png")},
+			{new ImageIcon("images/Player/신입생/신입생_화살당기기.png"), new ImageIcon("images/Player/신입생/신입생_화살당기기_left.png")},
+			{new ImageIcon("images/Player/신입생/신입생_단거리 공격.png"), new ImageIcon("images/Player/신입생/신입생_단거리 공격_left.png")}};
+	
+	private ImageIcon afterHitImg[] = {new ImageIcon("images/Player/신입생/신입생_화살쏘기.png"),
+			new ImageIcon("images/Player/신입생/신입생_화살쏘기_left.png")};
 	
 	public boolean isFall() {
 		return fall;
@@ -90,6 +100,14 @@ public class Player {
 	
 	public void setJump(boolean jump) {
 		this.jump = jump;
+	}
+	
+	public boolean isHit() {
+		return hit;
+	}
+	
+	public void setHit(boolean hit) {
+		this.hit = hit;
 	}
 	
 	public int getCountJump() {
@@ -164,6 +182,14 @@ public class Player {
 		this.status = status;
 	}
 	
+	public int getHit_status() {
+		return hit_status;
+	}
+	
+	public void setHit_status(int hit_status) {
+		this.hit_status = hit_status;
+	}
+	
 	public Image getImage() {
 		return image;
 	}
@@ -210,8 +236,17 @@ public class Player {
 					,new ImageIcon("images/Player/신입생/신입생2_left.png").getImage()};
 			this.imagesLeft = imagesLeft;
 			
-			jumpImg = new ImageIcon("images/Player/신입생/신입생_점프.png");
-			jumpImgLeft = new ImageIcon("images/Player/신입생/신입생_점프_left.png");
+			jumpImg[0] = new ImageIcon("images/Player/신입생/신입생_점프.png");
+			jumpImg[1] = new ImageIcon("images/Player/신입생/신입생_점프_left.png");
+			
+			ImageIcon hitImg[][] = {
+					{new ImageIcon("images/Player/신입생/신입생총.png"), new ImageIcon("images/Player/신입생/신입생총_left.png")},
+					{new ImageIcon("images/Player/신입생/신입생_화살당기기.png"), new ImageIcon("images/Player/신입생/신입생_화살당기기_left.png")},
+					{new ImageIcon("images/Player/신입생/신입생_단거리 공격.png"), new ImageIcon("images/Player/신입생/신입생_단거리 공격_left.png")}};
+			this.hitImg = hitImg;
+			
+			afterHitImg[0] = new ImageIcon("images/Player/신입생/신입생_화살쏘기.png");
+			afterHitImg[1] = new ImageIcon("images/Player/신입생/신입생_화살쏘기_left.png");
 			break;
 		case 2:
 			Image images2[] = {new ImageIcon("images/Player/3학년/3학년.png").getImage()
@@ -248,8 +283,8 @@ public class Player {
 					,new ImageIcon("images/Player/3학년/3학년_left.png").getImage()};
 			this.imagesLeft = imagesLeft2;
 			
-			jumpImg = new ImageIcon("images/Player/3학년/3학년_점프.png");
-			jumpImgLeft = new ImageIcon("images/Player/3학년/3학년_점프_left.png");
+			jumpImg[0] = new ImageIcon("images/Player/3학년/3학년_점프.png");
+			jumpImg[1] = new ImageIcon("images/Player/3학년/3학년_점프_left.png");
 			break;
 		case 3:
 			Image images3[] = {new ImageIcon("images/Player/직장인/직장인.png").getImage()
@@ -286,8 +321,8 @@ public class Player {
 					,new ImageIcon("images/Player/직장인/직장인_left.png").getImage()};
 			this.imagesLeft = imagesLeft3;
 			
-			jumpImg = new ImageIcon("images/Player/직장인/직장인_점프.png");
-			jumpImgLeft = new ImageIcon("images/Player/직장인/직장인_점프_left.png");
+			jumpImg[0] = new ImageIcon("images/Player/직장인/직장인_점프.png");
+			jumpImg[1] = new ImageIcon("images/Player/직장인/직장인_점프_left.png");
 			break;
 		default:
 			break;
@@ -300,10 +335,12 @@ public class Player {
 		if(cnt == imagesLeft.length) {
 			cnt = 0;
 		}
-		if(isJump()||isFall()) {
-			setImage(jumpImgLeft.getImage());
-		}else {
-			setImage(imagesLeft[cnt]);	
+		if(!isHit()) {
+			if(isJump()||isFall()) {
+				setImage(jumpImg[1].getImage());
+			}else {
+				setImage(imagesLeft[cnt]);	
+			}
 		}
 		cnt++;
 		if(x > 0) {
@@ -320,10 +357,12 @@ public class Player {
 		if(cnt == images.length) {
 			cnt = 0;
 		}
-		if(isJump()||isFall()) {
-			setImage(jumpImg.getImage());
-		}else {
-			setImage(images[cnt]);
+		if(!isHit()) {
+			if(isJump()||isFall()) {
+				setImage(jumpImg[0].getImage());
+			}else {
+				setImage(images[cnt]);
+			}
 		}
 		cnt++;
 		if(distance < back.getWidth(null)-130) {
@@ -338,11 +377,13 @@ public class Player {
 		if(cnt == images.length) {
 			cnt = 0;
 		}
-		if(isJump()||isFall()) {
-			setImage(jumpImg.getImage());
-			
-		}else {
-			setImage(images[cnt]);	
+		if(!isHit()) {
+			if(isJump()||isFall()) {
+				setImage(jumpImg[0].getImage());
+				
+			}else {
+				setImage(images[cnt]);	
+			}
 		}
 		cnt++;
 		distance += 10;
@@ -350,22 +391,94 @@ public class Player {
 	
 	// 멈출때 이미지 변겅
 	public void stop() {
-		if(isJump()||isFall()) {
-			setImage(jumpImg.getImage());
-		}else {
-			cnt = 0;
-			if (status == 1) {
-				setImage(images[cnt]);	
-			}else if (status == 2) {
-				setImage(imagesLeft[cnt]);
-			}		
+		cnt = 0;
+		if(!isHit()) {
+			if(isJump()||isFall()) {
+				setImage(jumpImg[status-1].getImage());
+			}else {
+				if (status == 1) {
+					setImage(images[cnt]);	
+				}else if (status == 2) {
+					setImage(imagesLeft[cnt]);
+				}		
+			}
 		}
-		
 	}
 	
 	// 총알 발사
 	public void p_hit() {
-		shots.add(new Shot(mainPanel, x+50, y+15, status));
+		switch (hit_status) {
+		case 1:
+			new Thread(new Runnable() {
+				@Override
+				public void run() {
+					try {
+						setHit(true);
+						setImage(hitImg[hit_status-1][status-1].getImage());
+						shots.add(new Shot(mainPanel, x+50, y+15, status));
+						Thread.sleep(100);
+						if(status==1) {
+							setImage(images[0]);
+						}else {
+							setImage(imagesLeft[0]);
+						}
+						Thread.sleep(100);
+						setHit(false);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+			}).start();
+			break;
+		case 2:
+			new Thread(new Runnable() {
+				@Override
+				public void run() {
+					try {
+						setHit(true);
+						setImage(hitImg[hit_status-1][status-1].getImage());
+						Thread.sleep(200);
+						shots.add(new Shot(mainPanel, x+50, y+15, status));
+						setImage(afterHitImg[status-1].getImage());
+						Thread.sleep(100);
+						if(status==1) {
+							setImage(images[0]);
+						}else {
+							setImage(imagesLeft[0]);
+						}
+						Thread.sleep(100);
+						setHit(false);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+			}).start();
+			break;
+		case 3:
+			new Thread(new Runnable() {
+				@Override
+				public void run() {
+					try {
+						setHit(true);
+						setImage(hitImg[hit_status-1][status-1].getImage());
+						Thread.sleep(200);
+						if(status==1) {
+							setImage(images[0]);
+						}else {
+							setImage(imagesLeft[0]);
+						}
+						Thread.sleep(200);
+						setHit(false);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+			}).start();
+			break;
+		default:
+			break;
+		}
+		
 	}
 	
 	// 데미지 받을 때 
@@ -502,16 +615,8 @@ public class Player {
 				long t2;
 				int set = 12; // 점프 계수 설정(0~20) 등으로 바꿔보자
 				int jumpY = 1; // 1이상으로만 설정하면 된다.(while문 조건 때문)
-				switch (status) {
-				case 1:
-					setImage(jumpImg.getImage());
-					break;
-				case 2:
-					setImage(jumpImgLeft.getImage());
-					break;
-				default:
-					break;
-				}
+				setImage(jumpImg[status-1].getImage());
+				setImage(jumpImg[status-1].getImage());
 				
 				while (jumpY >= 0) { // 상승 높이가 0일때까지 반복
 					
