@@ -19,10 +19,8 @@ public class RankingPanel extends JPanel implements MouseListener{
 	private JButton exitbt2;
 	private JButton exitbt3;
 
-	private JButton arrowbt1;
-	private JButton arrowbt2;
-	private JButton arrowbt3;
-	private JButton arrowbt4;
+	private JButton rightbt;
+	private JButton leftbt;
 	public ArrayList<String[]> scoreList = new ArrayList<String[]>(6);
 
 
@@ -35,9 +33,8 @@ public class RankingPanel extends JPanel implements MouseListener{
 	private Image back = backImg.getImage();
 	
 	private int x1 = oneStageRangking.getWidth(null) - 150;
-	private int x2 = oneStageRangking.getWidth(null) + 20;
-	private int x3 = 2*oneStageRangking.getWidth(null) - 150;
-	private int x4 = 2*oneStageRangking.getWidth(null) + 20;
+	private int x2 = -500; //처음에는 화면에서 안보이게
+
 	private int bt1_x = 1500;
 	private int bt2_x = oneStageRangking.getWidth(null) + 1500;
 	private int bt3_x = 2*(oneStageRangking.getWidth(null)) + 1500;
@@ -77,56 +74,28 @@ public class RankingPanel extends JPanel implements MouseListener{
 		add(exitbt3);
 		
 		
-		
-		
-		
-		
-		
 		Image arrowButton= new ImageIcon("images/button/ArrowButton.png").getImage();
 		
-		arrowbt1 = new JButton(new ImageIcon(arrowButton));
-		arrowbt1.setName("arrowbt1");
-		arrowbt1.setBorderPainted(false);
-		arrowbt1.setFocusPainted(false);
-		arrowbt1.setContentAreaFilled(false);
-		//leftArrowbt.setBounds(20, 500, arrowButton.getWidth(null), arrowButton.getHeight(null));
-		arrowbt1.setBounds(x1, 500, arrowButton.getWidth(null), arrowButton.getHeight(null));
-		arrowbt1.addMouseListener(this);
+		rightbt = new JButton(new ImageIcon(arrowButton));
+		rightbt.setName("rightbt");
+		rightbt.setBorderPainted(false);
+		rightbt.setFocusPainted(false);
+		rightbt.setContentAreaFilled(false);
+		rightbt.setBounds(x1, 500, arrowButton.getWidth(null), arrowButton.getHeight(null));
+		rightbt.addMouseListener(this);
 		
-		add(arrowbt1);
+		add(rightbt);
 		
-		arrowbt2 = new JButton(new ImageIcon(arrowButton));
-		arrowbt2.setName("arrowbt2");
-		arrowbt2.setBorderPainted(false);
-		arrowbt2.setFocusPainted(false);
-		arrowbt2.setContentAreaFilled(false);
-		//leftArrowbt.setBounds(20, 500, arrowButton.getWidth(null), arrowButton.getHeight(null));
-		arrowbt2.setBounds(x2, 500, arrowButton.getWidth(null), arrowButton.getHeight(null));
-		arrowbt2.addMouseListener(this);
+		leftbt = new JButton(new ImageIcon(arrowButton));
+		leftbt.setName("leftbt");
+		leftbt.setBorderPainted(false);
+		leftbt.setFocusPainted(false);
+		leftbt.setContentAreaFilled(false);
+		leftbt.setBounds(x2, 500, arrowButton.getWidth(null), arrowButton.getHeight(null));
+		leftbt.addMouseListener(this);
 		
-		add(arrowbt2);
+		add(leftbt);
 		
-		arrowbt3 = new JButton(new ImageIcon(arrowButton));
-		arrowbt3.setName("arrowbt3");
-		arrowbt3.setBorderPainted(false);
-		arrowbt3.setFocusPainted(false);
-		arrowbt3.setContentAreaFilled(false);
-		//leftArrowbt.setBounds(20, 500, arrowButton.getWidth(null), arrowButton.getHeight(null));
-		arrowbt3.setBounds(x3, 500, arrowButton.getWidth(null), arrowButton.getHeight(null));
-		arrowbt3.addMouseListener(this);
-		
-		add(arrowbt3);
-		
-		arrowbt4 = new JButton(new ImageIcon(arrowButton));
-		arrowbt4.setName("arrowbt4");
-		arrowbt4.setBorderPainted(false);
-		arrowbt4.setFocusPainted(false);
-		arrowbt4.setContentAreaFilled(false);
-		//leftArrowbt.setBounds(20, 500, arrowButton.getWidth(null), arrowButton.getHeight(null));
-		arrowbt4.setBounds(x4, 500, arrowButton.getWidth(null), arrowButton.getHeight(null));
-		arrowbt4.addMouseListener(this);
-		
-		add(arrowbt4);
 		repaintThread();
 
 	}
@@ -244,106 +213,82 @@ public class RankingPanel extends JPanel implements MouseListener{
 			public void run() {
 				switch(btn){
 					case 1:
-						while (x > -(oneStageRangking.getWidth(null))) {
+						if(x > -(oneStageRangking.getWidth(null))) {
+							while (x > -(oneStageRangking.getWidth(null))) {
+	
+								x -= 20;
+								
+								bt1_x -= 20;
+								bt2_x -= 20;
+								bt3_x -= 20;
+								leftbt.setLocation(20, 500); // 화면에서 보이게
+								exitbt1.setLocation(bt1_x, 100);
+								exitbt2.setLocation(bt2_x, 100);							
+								exitbt3.setLocation(bt3_x, 100);
+								try {
+									Thread.sleep(10);
+								} catch(Exception e) {
+									e.printStackTrace();
+								}
+							}
+						}
+						else {
+							while (x > (-2 * (oneStageRangking.getWidth(null)))) {
+								x -= 20;
+								bt1_x -= 20;
+								bt2_x -= 20;
+								bt3_x -= 20;
+								rightbt.setLocation(-300, 500); // 화면에서 안보이게 
+								exitbt1.setLocation(bt1_x, 100);
+								exitbt2.setLocation(bt2_x, 100);							
+								exitbt3.setLocation(bt3_x, 100);
+								try {
+									Thread.sleep(10);
+								} catch(Exception e) {
+									e.printStackTrace();
+								}
+							}
+						}
+						break;
+						
+					case 2:							
+						if(x < -(oneStageRangking.getWidth(null))) {
 
-							x -= 20;
-							x1 -= 20;
-							x2 -= 20;
-							x3 -= 20;
-							x4 -= 20;
-							bt1_x -= 20;
-							bt2_x -= 20;
-							bt3_x -= 20;
+							while (x < -(oneStageRangking.getWidth(null))) {
+								x += 20;
+								bt1_x += 20;
+								bt2_x += 20;
+								bt3_x += 20;
+								rightbt.setLocation(oneStageRangking.getWidth(null) - 150, 500);
+								exitbt1.setLocation(bt1_x, 100);
+								exitbt2.setLocation(bt2_x, 100);							
+								exitbt3.setLocation(bt3_x, 100);
+								try {
+									Thread.sleep(10);
+								} catch(Exception e) {
+									e.printStackTrace();
+								}
+							}
 							
-							arrowbt1.setLocation(x1, 500);
-							arrowbt2.setLocation(x2, 500);
-							arrowbt3.setLocation(x3, 500);
-							arrowbt4.setLocation(x4, 500);
-							exitbt1.setLocation(bt1_x, 100);
-							exitbt2.setLocation(bt2_x, 100);							
-							exitbt3.setLocation(bt3_x, 100);
-							try {
-								Thread.sleep(10);
-							} catch(Exception e) {
-								e.printStackTrace();
-							}
-						}
-						break;
-					case 2:
-						while (x < 0) {
-							x += 20;
-							x1 += 20;
-							x2 += 20;
-							x3 += 20;
-							x4 += 20;
-							bt1_x += 20;
-							bt2_x += 20;
-							bt3_x += 20;
-							arrowbt1.setLocation(x1, 500);
-							arrowbt2.setLocation(x2, 500);
-							arrowbt3.setLocation(x3, 500);
-							arrowbt4.setLocation(x4, 500);
-							exitbt1.setLocation(bt1_x, 100);
-							exitbt2.setLocation(bt2_x, 100);							
-							exitbt3.setLocation(bt3_x, 100);
-							try {
-								Thread.sleep(10);
-							} catch(Exception e) {
-								e.printStackTrace();
-							}
-						} 
-						break;
-					case 3:
-						while (x > (-2 * (oneStageRangking.getWidth(null)))) {
-							x -= 20;
-							x1 -= 20;
-							x2 -= 20;
-							x3 -= 20;
-							x4 -= 20;
-							bt1_x -= 20;
-							bt2_x -= 20;
-							bt3_x -= 20;
-							arrowbt1.setLocation(x1, 500);
-							arrowbt2.setLocation(x2, 500);
-							arrowbt3.setLocation(x3, 500);
-							arrowbt4.setLocation(x4, 500);
-							exitbt1.setLocation(bt1_x, 100);
-							exitbt2.setLocation(bt2_x, 100);							
-							exitbt3.setLocation(bt3_x, 100);
-							try {
-								Thread.sleep(10);
-							} catch(Exception e) {
-								e.printStackTrace();
-							}
-						}
-						break;
-					case 4: 
-						while (x < -(oneStageRangking.getWidth(null))) {
-							x += 20;
-							x1 += 20;
-							x2 += 20;
-							x3 += 20;
-							x4 += 20;
-							bt1_x += 20;
-							bt2_x += 20;
-							bt3_x += 20;
-							arrowbt1.setLocation(x1, 500);
-							arrowbt2.setLocation(x2, 500);
-							arrowbt3.setLocation(x3, 500);
-							arrowbt4.setLocation(x4, 500);
-							exitbt1.setLocation(bt1_x, 100);
-							exitbt2.setLocation(bt2_x, 100);							
-							exitbt3.setLocation(bt3_x, 100);
-							try {
-								Thread.sleep(10);
-							} catch(Exception e) {
-								e.printStackTrace();
-							}
+						} else {
+							while (x < 0) {
+								x += 20;
+								bt1_x += 20;
+								bt2_x += 20;
+								bt3_x += 20;
+								leftbt.setLocation(-400, 500);
+								exitbt1.setLocation(bt1_x, 100);
+								exitbt2.setLocation(bt2_x, 100);							
+								exitbt3.setLocation(bt3_x, 100);
+								try {
+									Thread.sleep(10);
+								} catch(Exception e) {
+									e.printStackTrace();
+								}
+							} 
 						}
 						break;
 					}
-					
-					
 				}
 		}).start();
 	}
@@ -351,15 +296,11 @@ public class RankingPanel extends JPanel implements MouseListener{
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		if(e.getComponent().getName().equals("arrowbt1")) {
+		if(e.getComponent().getName().equals("rightbt")) {
 			pushBackground(1);
-		} else if(e.getComponent().getName().equals("arrowbt2")) {
+		} else if(e.getComponent().getName().equals("leftbt")) {
 			pushBackground(2);
-		} else if(e.getComponent().getName().equals("arrowbt3")) {
-			pushBackground(3);
-		}else if(e.getComponent().getName().equals("arrowbt4")) {
-			pushBackground(4);
-		}
+		} 
 		
 	}
 	@Override
