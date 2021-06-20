@@ -26,7 +26,7 @@ public class Player {
 	private int score = 0; // 점수
 	private Image image;
 	private ArrayList<Shot> shots = new ArrayList<Shot>(); // 플레이어가 쏜 총알들이 담기는 리스트
-	private int cnt = 0; // 현재 캐릭터 이미지 설정하는 계수
+	private int cnt = 0; // 현재 캐릭터 이미지 설정하는 계수            
 	private boolean fall = false; // 낙하 여부
 	private boolean jump = false; // 점프 여부
 	private int stage;
@@ -38,18 +38,18 @@ public class Player {
 	
 	private Dimension view = Toolkit.getDefaultToolkit().getScreenSize();
 	
-	private Image images[] = {new ImageIcon("images/Player/신입생/신입생.png").getImage()
-			,new ImageIcon("images/Player/신입생/신입생.png").getImage()
-			,new ImageIcon("images/Player/신입생/신입생2.png").getImage()
-			,new ImageIcon("images/Player/신입생/신입생2.png").getImage()
-			,new ImageIcon("images/Player/신입생/신입생.png").getImage()
-			,new ImageIcon("images/Player/신입생/신입생.png").getImage()
-			,new ImageIcon("images/Player/신입생/신입생2.png").getImage()
-			,new ImageIcon("images/Player/신입생/신입생2.png").getImage()
-			,new ImageIcon("images/Player/신입생/신입생.png").getImage()
-			,new ImageIcon("images/Player/신입생/신입생.png").getImage()
-			,new ImageIcon("images/Player/신입생/신입생2.png").getImage()
-			,new ImageIcon("images/Player/신입생/신입생2.png").getImage()};
+	private Image images[] = {new ImageIcon("images/Player/3학년/3학년.png").getImage()
+			,new ImageIcon("images/Player/3학년/3학년.png").getImage()
+			,new ImageIcon("images/Player/3학년/3학년2.png").getImage()
+			,new ImageIcon("images/Player/3학년/3학년2.png").getImage()
+			,new ImageIcon("images/Player/3학년/3학년.png").getImage()
+			,new ImageIcon("images/Player/3학년/3학년.png").getImage()
+			,new ImageIcon("images/Player/3학년/3학년2.png").getImage()
+			,new ImageIcon("images/Player/3학년/3학년2.png").getImage()
+			,new ImageIcon("images/Player/3학년/3학년.png").getImage()
+			,new ImageIcon("images/Player/3학년/3학년.png").getImage()
+			,new ImageIcon("images/Player/3학년/3학년2.png").getImage()
+			,new ImageIcon("images/Player/3학년/3학년2.png").getImage()};
 
 	
 	private Image imagesLeft[] = {new ImageIcon("images/Player/신입생/신입생_left.png").getImage()
