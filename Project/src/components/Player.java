@@ -36,7 +36,7 @@ public class Player {
 	private int countJump = 0;
 	private int field = 900;
 	
-	private ImageIcon backImg = new ImageIcon("images/게임패널배경.png");
+	private ImageIcon backImg = new ImageIcon("images/랭킹1.png");
 	private Image back = backImg.getImage();
 	
 	private Dimension view = Toolkit.getDefaultToolkit().getScreenSize();

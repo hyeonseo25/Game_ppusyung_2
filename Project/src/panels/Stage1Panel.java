@@ -75,9 +75,9 @@ public class Stage1Panel extends JPanel{
 	private ImageIcon redBg = new ImageIcon("images/map/redBg.png"); 
 	
 	// 아이템 이미지 아이콘들
-	private ImageIcon item1Ic = new ImageIcon("images/map/머스캣드링크.png");
-	private ImageIcon item2Ic = new ImageIcon("images/map/찐만두.png");
-	private ImageIcon item3Ic = new ImageIcon("images/map/포켓치킨.png");
+	private ImageIcon item1Ic = new ImageIcon("images/item/포션_아이템.png");
+	private ImageIcon item2Ic = new ImageIcon("images/item/체리_아이템.png");
+	private ImageIcon item3Ic = new ImageIcon("images/item/오렌지_아이템.png");
 	private ImageIcon itemHPIc = new ImageIcon("images/HP.png");
 		
 	private int[] monsterSpawnpoint = {2250,2500,3350,4000,4190,4520,5570,5990,6080,6560,8240,8880,9460,10520,10760,11130,11430}; //몬스터 스폰 위치
@@ -102,7 +102,7 @@ public class Stage1Panel extends JPanel{
 	private int[][] colorArr; // 이미지의 x y 좌표의 픽셀 색값을 저장하는 2차원배열
 		
 	private int end = back.getWidth(null)-(view.width-1660); // 도착지
-	
+
 	private Player player;
 	private Monster monster;
 	private util.Timer time;

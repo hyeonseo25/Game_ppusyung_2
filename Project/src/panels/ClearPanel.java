@@ -1,5 +1,6 @@
 package panels;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -26,11 +27,11 @@ public class ClearPanel extends JPanel {
 	private int score; // 플레이어 점수
 	private int stage;
 	
-	private ImageIcon ClearMessageImg = new ImageIcon("images/게임클리어.gif");
-	private Image ClearMessage = ClearMessageImg.getImage();
+	private Image back1 = new ImageIcon("images/클리어1.png").getImage();
+	private Image back2 = new ImageIcon("images/클리어2.png").getImage();
+	private Image back3 = new ImageIcon("images/클리어3.png").getImage();
+
 	
-	private ImageIcon backImg = new ImageIcon("images/클리어패널배경.png");
-	private Image back = backImg.getImage();
 	
 	public String getName() {
 		return name.getText();
@@ -100,9 +101,16 @@ public class ClearPanel extends JPanel {
 	public void paintComponent(Graphics g) {
 		// TODO Auto-generated method stub	
 		super.paintComponent(g);
-		g.drawImage(back, 0, 0, this); // 뒷배경
-		g.drawImage(ClearMessage, 800, 180, this); //게임 클리어 gif
-		g.setFont(new Font("돋음", Font.BOLD, 60)); 
-		g.drawString(Integer.toString(score), 1100, 520); //점수
+		if(getStage() == 1) {
+			g.drawImage(back1, 0, 0, this); // 뒷배경
+		}
+		else if(getStage() == 2) {
+			g.drawImage(back2, 0, 0, this); // 뒷배경
+		}else if(getStage() == 3){
+			g.drawImage(back3, 0, 0, this); // 뒷배경
+		}
+		g.setFont(new Font("Sandoll 프레스 01 Original", Font.BOLD, 60)); 
+		g.setColor(Color.WHITE);
+		g.drawString(Integer.toString(score) + " 점", 1150, 640); //점수
 	}
 }
