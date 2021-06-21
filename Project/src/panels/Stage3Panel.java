@@ -39,7 +39,6 @@ public class Stage3Panel extends JPanel{
 	private boolean keyLeft = false;
 	private boolean keyRight = false;
 	private boolean keyEnter = false;
-	private int cnt=5; // 총알에 딜레이 주기 위한 cnt
 	
 	//시간 뒷 배경
 	private ImageIcon textBackImage1 = new ImageIcon("images/backImage.png");
@@ -162,7 +161,6 @@ public class Stage3Panel extends JPanel{
 		time = new util.Timer();
 		time.start();
 		player = new Player(this,3);
-		player.setImages(3);
 		player.fall(); // field 위에 플레이어가 있으면 떨어지게
 		player.deleteShot(); // 화면 밖으로 나간 총알을 없애는 메서드
 		monster = new Monster(player);
@@ -226,7 +224,7 @@ public class Stage3Panel extends JPanel{
 			for (int j = 0; j < maxY; j += 2) {
 				if (colorArr[i][j] == 0) { // 색값이 0 일경우 (검은색)
 					// 좌표에 40을 곱하고, 넓이와 높이는 80,100으로 한다.
-					fieldList.add(new Field(field1Ic.getImage(), i * 40 , j * 40, 80, 100));
+					fieldList.add(new Field(field1Ic.getImage(), i * 40 , j * 40, 140, 395));
 
 				} else if (colorArr[i][j] == 12829635) { // 색값이 12829635 일경우 (회색)
 					// 좌표에 40을 곱하고, 넓이와 높이는 80으로 한다.
@@ -302,6 +300,13 @@ public class Stage3Panel extends JPanel{
 				case KeyEvent.VK_A: keyLeft = false; player.stop();break;
 				case KeyEvent.VK_D: keyRight = false;  player.stop();break;
 				case KeyEvent.VK_ENTER: keyEnter = false; break;
+				case KeyEvent.VK_SHIFT: 
+					if(player.getHit_status()!=3) {
+						player.setHit_status(player.getHit_status()+1);
+					}else {
+						player.setHit_status(1);
+					}
+					break;
 				}
 			}
 		});
@@ -328,10 +333,9 @@ public class Stage3Panel extends JPanel{
 		}
 		
 		if(keyEnter==true) {
-			if(cnt==5) {
+			if(!player.isHit()) {
 				Sound("music/shotSound.wav", false); // 총쏘는 소리
 				player.p_hit();
-				cnt = 0;
 			}
 		}
 	}
@@ -348,9 +352,6 @@ public class Stage3Panel extends JPanel{
 					try {
 						keyCheck();
 						setObject();
-						if(cnt<5) {
-							cnt++; // 총알에 딜레이
-						}
 						
 						if(player.getY() - player.getImage().getHeight(null)>1100) {
 							player.setHp(0);
@@ -412,7 +413,7 @@ public class Stage3Panel extends JPanel{
 			for (int i = 0; i < fieldList.size(); i++) {
 				Field tempFoot = fieldList.get(i);
 				// 사양을 덜 잡아먹게 하기위한 조치
-				if (tempFoot.getX() > -90 && tempFoot.getX() < view.getWidth()) { // x값이 -90~810인 객체들만 그린다.
+				if (tempFoot.getX() > -150 && tempFoot.getX() < view.getWidth()) { // x값이 -120~810인 객체들만 그린다.
 					g.drawImage(tempFoot.getImage(), tempFoot.getX(), tempFoot.getY(), tempFoot.getWidth(), tempFoot.getHeight(), null);
 				}
 			}
@@ -523,7 +524,7 @@ public class Stage3Panel extends JPanel{
 		// 발판위치를 -10 씩 해준다. (왼쪽으로 흐르는 효과)
 		for (int i = 0; i < fieldList.size(); i++) {
 			Field tempField = fieldList.get(i); // 임시 변수에 리스트 안에 있는 개별 발판을 불러오자
-			if (tempField.getX() < -90) { // 발판의 x좌표가 -90 미만이면 해당 발판을 제거한다.(최적화)
+			if (tempField.getX() < -150) { // 발판의 x좌표가 -150 미만이면 해당 발판을 제거한다.(최적화)
 				fieldList.remove(tempField);
 			} else {
 				tempField.setX(tempField.getX() - 10); // 위 조건에 해당이 안되면 x좌표를 줄이자

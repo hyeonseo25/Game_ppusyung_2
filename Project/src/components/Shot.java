@@ -20,7 +20,7 @@ public class Shot {
 	
 	public Shot(JPanel main, int x, int y, int status, int shot_type) { //status 1:오른쪽으로, 2:왼쪽으로 총알 이동
 		if(shot_type==1) {
-			this.x = x+60;
+			this.x = x+80;
 			this.y = y+80;
 		}else {
 			this.x = x+25;
