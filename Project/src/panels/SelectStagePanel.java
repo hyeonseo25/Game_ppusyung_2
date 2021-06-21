@@ -25,7 +25,7 @@ public class SelectStagePanel extends JPanel{
 	private JButton gamebt2;
 	private JButton gamebt3;
 	
-	private ImageIcon backImg = new ImageIcon("images/시작패널배경.png");
+	private ImageIcon backImg = new ImageIcon("images/select_bg.png");
 	private Image back = backImg.getImage();
 	
 	private Clip backgroundMusic;
@@ -55,7 +55,7 @@ public class SelectStagePanel extends JPanel{
 		gamebt1.setBorderPainted(false);
 		gamebt1.setFocusPainted(false);
 		gamebt1.setContentAreaFilled(false);
-		gamebt1.setBounds(200, 200, stageButton1.getWidth(null), stageButton1.getHeight(null));
+		gamebt1.setBounds(150, 320, stageButton1.getWidth(null), stageButton1.getHeight(null));
 		gamebt1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -71,7 +71,7 @@ public class SelectStagePanel extends JPanel{
 		gamebt2.setBorderPainted(false);
 		gamebt2.setFocusPainted(false);
 		gamebt2.setContentAreaFilled(false);
-		gamebt2.setBounds(600, 200, stageButton2.getWidth(null), stageButton2.getHeight(null));
+		gamebt2.setBounds((view.width/2 - stageButton2.getWidth(null)/2), 320, stageButton2.getWidth(null), stageButton2.getHeight(null));
 		gamebt2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -87,7 +87,7 @@ public class SelectStagePanel extends JPanel{
 		gamebt3.setBorderPainted(false);
 		gamebt3.setFocusPainted(false);
 		gamebt3.setContentAreaFilled(false);
-		gamebt3.setBounds(1000, 200, stageButton3.getWidth(null), stageButton3.getHeight(null));
+		gamebt3.setBounds(1300, 320, stageButton3.getWidth(null), stageButton3.getHeight(null));
 		gamebt3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {

@@ -42,7 +42,7 @@ public class Stage1Panel extends JPanel{
 	private int cnt=5; // 총알에 딜레이 주기 위한 cnt
 	
 	//시간 뒷 배경
-	private ImageIcon textBackImage1 = new ImageIcon("images/backImage.png");
+	private ImageIcon textBackImage1 = new ImageIcon("images/시계.png");
 	private Image textBackImg1 = textBackImage1.getImage();
 	
 	// 점수 뒷 배경
