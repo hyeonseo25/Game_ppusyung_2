@@ -220,15 +220,20 @@ public class Stage3Panel extends JPanel{
 			} // end of for j
 		} //end of for i
 		
-		for (int i = 0; i < maxX; i += 2) { // 발판은 4칸을 차지하는 공간이기 때문에 2,2사이즈로 반복문을 돌린다.
+		for (int i = 0; i < maxX; i += 4) { // 발판은 4칸을 차지하는 공간이기 때문에 2,2사이즈로 반복문을 돌린다.
 			for (int j = 0; j < maxY; j += 2) {
 				if (colorArr[i][j] == 0) { // 색값이 0 일경우 (검은색)
 					// 좌표에 40을 곱하고, 넓이와 높이는 80,100으로 한다.
-					fieldList.add(new Field(field1Ic.getImage(), i * 40 , j * 40, 140, 395));
+					fieldList.add(new Field(field1Ic.getImage(), i * 40 , j * 40, 160, 427));
+				}
+			}
+		} // end of for i
 
-				} else if (colorArr[i][j] == 12829635) { // 색값이 12829635 일경우 (회색)
+		for (int i = 0; i < maxX; i += 2) { // 장애물은 4칸을 차지하는 공간이기 때문에 2,2사이즈로 반복문을 돌린다.
+			for (int j = 0; j < maxY; j += 2) {
+				if (colorArr[i][j] == 15539236) { // 색값이 15539236일 경우 (빨간색) 1칸
 					// 좌표에 40을 곱하고, 넓이와 높이는 80으로 한다.
-					fieldList.add(new Field(field2Ic.getImage(), i*40 , j * 40, 80, 80));
+					tacleList.add(new Tacle(tacle10Ic.getImage(), i * 40 , j * 40, 80, 80));
 				}
 			}
 		} // end of for i
