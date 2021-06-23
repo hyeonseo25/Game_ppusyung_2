@@ -7,11 +7,16 @@ import java.sql.Statement;
 
 public class DBConnection {
 	private final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
-	private final String DB_URL = "jdbc:mysql://localhost/javaproject?" +
+	/*private final String DB_URL = "jdbc:mysql://localhost/javaproject?" +
 			"useUnicode = true&characterEncoding=utf8&serverTimezone=UTC";
 	
 	private final String USER_NAME = "root";
-	private final String PASSWORD = "1234";
+	private final String PASSWORD = "1234";*/
+	private final String DB_URL = "jdbc:mysql://mirimmarket-db.ct8u0xyepbpg.us-east-1.rds.amazonaws.com/mirimmarket?" +
+			"useUnicode = true&characterEncoding=utf8&serverTimezone=UTC";
+	
+	private final String USER_NAME = "admin";
+	private final String PASSWORD = "mirim2003";
 	public Connection conn = null;
 	public Statement stmt = null;
 	public ResultSet rs = null;
