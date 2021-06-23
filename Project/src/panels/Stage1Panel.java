@@ -65,7 +65,7 @@ public class Stage1Panel extends JPanel{
 	//private ImageIcon field1Ic = new ImageIcon("images/map/발판.png"); // 발판
 	private ImageIcon field1Ic = new ImageIcon("images/map/땅-01.png"); // 발판
 
-	private ImageIcon field2Ic = new ImageIcon("images/map/공중발판.png"); // 공중발판
+	private ImageIcon field2Ic = new ImageIcon("images/map/stage1발판.png"); // 공중발판
 
 	
 	// 장애물 이미지 아이콘들
@@ -227,7 +227,7 @@ public class Stage1Panel extends JPanel{
 			for (int j = 0; j < maxY; j += 2) {
 				if (colorArr[i][j] == 0) { // 색값이 0 일경우 (검은색)
 					// 좌표에 40을 곱하고, 넓이와 높이는 80,100으로 한다.
-					fieldList.add(new Field(field1Ic.getImage(), i * 40 , j * 40, 140, 395));
+					fieldList.add(new Field(field1Ic.getImage(), i * 40 , j * 40, 80, 395));
 
 				} else if (colorArr[i][j] == 12829635) { // 색값이 12829635 일경우 (회색)
 					// 좌표에 40을 곱하고, 넓이와 높이는 80으로 한다.

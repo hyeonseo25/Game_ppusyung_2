@@ -36,7 +36,7 @@ public class Player {
 	private int countJump = 0;
 	private int field = 900;
 	
-	private ImageIcon backImg = new ImageIcon("images/·©Å·1.png");
+	private ImageIcon backImg = new ImageIcon("images/map/¹è°æ01.png");
 	private Image back = backImg.getImage();
 	
 	private Dimension view = Toolkit.getDefaultToolkit().getScreenSize();

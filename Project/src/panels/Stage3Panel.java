@@ -63,7 +63,7 @@ public class Stage3Panel extends JPanel{
 	//private ImageIcon field1Ic = new ImageIcon("images/map/발판.png"); // 발판
 	private ImageIcon field1Ic = new ImageIcon("images/map/땅-03.png"); // 발판
 
-	private ImageIcon field2Ic = new ImageIcon("images/map/공중발판.png"); // 공중발판
+	private ImageIcon field2Ic = new ImageIcon("images/map/stage3발판.png"); // 공중발판
 
 	// 장애물 이미지 아이콘들
 	private ImageIcon tacle10Ic = new ImageIcon("images/map/무당벌레장애물.gif"); // 1칸 장애물

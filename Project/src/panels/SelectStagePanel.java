@@ -51,7 +51,7 @@ public class SelectStagePanel extends JPanel{
 		add(replaybt);
 		
 		gamebt1 = new JButton(new ImageIcon(stageButton1));
-		gamebt1.setName("GameButton");
+		gamebt1.setName("GameStartButton");
 		gamebt1.setBorderPainted(false);
 		gamebt1.setFocusPainted(false);
 		gamebt1.setContentAreaFilled(false);
@@ -67,7 +67,7 @@ public class SelectStagePanel extends JPanel{
 		add(gamebt1);
 		
 		gamebt2 = new JButton(new ImageIcon(stageButton2));
-		gamebt2.setName("GameButton");
+		gamebt2.setName("GameStartButton");
 		gamebt2.setBorderPainted(false);
 		gamebt2.setFocusPainted(false);
 		gamebt2.setContentAreaFilled(false);
@@ -78,12 +78,12 @@ public class SelectStagePanel extends JPanel{
 				// TODO Auto-generated method stub
 				main.setStage(2);
 			}
-		});
+		});	
 		gamebt2.addMouseListener((MouseListener) o);
 		add(gamebt2);
 		
 		gamebt3 = new JButton(new ImageIcon(stageButton3));
-		gamebt3.setName("GameButton");
+		gamebt3.setName("GameStartButton");
 		gamebt3.setBorderPainted(false);
 		gamebt3.setFocusPainted(false);
 		gamebt3.setContentAreaFilled(false);
