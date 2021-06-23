@@ -31,6 +31,7 @@ public class ClearPanel extends JPanel {
 	private Image back2 = new ImageIcon("images/클리어2.png").getImage();
 	private Image back3 = new ImageIcon("images/클리어3.png").getImage();
 
+	private Image nameField = new ImageIcon("images/이름입력밑줄.png").getImage();
 	
 	
 	public String getName() {
@@ -62,6 +63,8 @@ public class ClearPanel extends JPanel {
 		Font font=new Font("돋음", Font.BOLD, 35);
 		name = new JTextField("이름을 입력해주세요");
 		name.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+		name.setForeground(Color.WHITE);
+		name.setBackground(Color.black);
 		name.setHorizontalAlignment(JTextField.CENTER);
 		// hint 리스너
 		name.addFocusListener(new FocusAdapter() {
@@ -72,8 +75,8 @@ public class ClearPanel extends JPanel {
 		});
 		name.setName("name");
 		name.setFont(font);
-		name.setLocation(800, 790);
-		name.setSize(600, 50);
+		name.setLocation(750, 350);
+		name.setSize(390, 50);
 		add(name);
 		
 		applybt = new JButton(new ImageIcon("images/button/ClearPanelButton.png"));
@@ -81,7 +84,7 @@ public class ClearPanel extends JPanel {
 		applybt.setBorderPainted(false);
 		applybt.setFocusPainted(false);
 		applybt.setContentAreaFilled(false);
-		applybt.setBounds(1450, 710, 200, 200);
+		applybt.setBounds(1140, 270, 200, 200);
 		
 		applybt.addMouseListener(new MouseAdapter() {
 			@Override
@@ -109,6 +112,7 @@ public class ClearPanel extends JPanel {
 		}else if(getStage() == 3){
 			g.drawImage(back3, 0, 0, this); // 뒷배경
 		}
+		g.drawImage(nameField, 750, 400, this);
 		g.setFont(new Font("Sandoll 프레스 01 Original", Font.BOLD, 60)); 
 		g.setColor(Color.WHITE);
 		g.drawString(Integer.toString(score) + " 점", 1150, 640); //점수
