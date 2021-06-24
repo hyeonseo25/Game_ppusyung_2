@@ -12,6 +12,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import main.Main;
 import util.DBConnection;
 
 public class RankingPanel extends JPanel implements MouseListener{
@@ -110,34 +111,32 @@ public class RankingPanel extends JPanel implements MouseListener{
 		
 		ArrayList<String[]> list = new ArrayList<String[]>();
 
-		
-		DBConnection db = new DBConnection(); //디비 연결
 		String sql1 = "select * from user where stage = 1 order by score DESC"; //score 내림차순으로 정렬
 		String sql2 = "select * from user where stage = 2 order by score DESC";
 		String sql3 = "select * from user where stage = 3 order by score DESC";
 		try {
-			db.rs = db.stmt.executeQuery(sql1);
+			Main.db.rs = Main.db.stmt.executeQuery(sql1);
 			int i = 0;
-			while(db.rs.next() && i < 10) {
-				stage1Name[i] = db.rs.getString("name");
-				stage1Score[i] = db.rs.getString("score");			
+			while(Main.db.rs.next() && i < 10) {
+				stage1Name[i] = Main.db.rs.getString("name");
+				stage1Score[i] = Main.db.rs.getString("score");			
 				i++;
 			}
 			
 	
-			db.rs = db.stmt.executeQuery(sql2);
+			Main.db.rs = Main.db.stmt.executeQuery(sql2);
 			i = 0;
-			while(db.rs.next() && i < 10) {
-				stage2Name[i] = db.rs.getString("name");
-				stage2Score[i] = db.rs.getString("score");			
+			while(Main.db.rs.next() && i < 10) {
+				stage2Name[i] = Main.db.rs.getString("name");
+				stage2Score[i] = Main.db.rs.getString("score");			
 				i++;
 			}
 			
-			db.rs = db.stmt.executeQuery(sql3);
+			Main.db.rs = Main.db.stmt.executeQuery(sql3);
 			i = 0;
-			while(db.rs.next() && i < 10) {
-				stage3Name[i] = db.rs.getString("name");
-				stage3Score[i] = db.rs.getString("score");			
+			while(Main.db.rs.next() && i < 10) {
+				stage3Name[i] = Main.db.rs.getString("name");
+				stage3Score[i] = Main.db.rs.getString("score");			
 				i++;
 			}
 			

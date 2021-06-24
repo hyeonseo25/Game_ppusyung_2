@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 
 import panels.ClearPanel;
 import panels.StartPanel;
+import util.DBConnection;
 import panels.GameOverPanel;
 import panels.InfoPanel;
 import panels.RankingPanel;
@@ -34,11 +35,14 @@ public class Main extends ListenerAdapter{
 	private RankingPanel rankingPanel; 		// 랭킹 패널
 	private InfoPanel infoPanel;			// 설명 패널
 	
+	public static DBConnection db;
+	
 	private CardLayout cl; // 카드 레이아웃 - 패널 여러개를 돌려가며 보여줄 수 있게 해줌
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Main main = new Main();
+		db =  new DBConnection();
 	}
 	
 	public Main() {
