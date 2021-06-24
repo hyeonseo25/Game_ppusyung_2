@@ -17,15 +17,15 @@ public class Monster {
     		new MonsterThread(4000, 450, 100, "images/monsters/물걸레괴물.gif", player),
     		new MonsterThread(4190, 450, 100, "images/monsters/책괴물.gif", player),
     		new GunMonster(4520, 500, 100, "images/monsters/물걸레괴물.gif", player),
-    		new MonsterThread(5570, 450, 100, "images/monsters/지렁이괴물.gif", player),
+    		new MonsterThread(5570, 450, 100, "images/monsters/미사일.png", player),
     		new MonsterThread(5990, 400, 100, "images/monsters/날개괴물.gif", player),
-    		new MonsterThread(6080, 450, 100, "images/monsters/지렁이괴물.gif", player),
+    		new MonsterThread(6080, 450, 100, "images/monsters/미사일.png", player),
     		new MonsterThread(6560, 450, 100, "images/monsters/슬라임괴물.gif", player),
     		new MonsterThread(8210, 400, 400, "images/monsters/날개괴물.gif", player),
     		new MonsterThread(8240, 450, 300, "images/monsters/노란색슬라임괴물.gif", player),
     		new MonsterThread(9460, 300, 1000, "images/monsters/슬라임괴물보스.gif", player),
     		new MonsterThread(10520, 450, 100, "images/monsters/책괴물.gif", player),
-    		new MonsterThread(10760, 450, 100, "images/monsters/지렁이괴물.gif", player),
+    		new MonsterThread(10760, 450, 100, "images/monsters/미사일.png", player),
     		new MonsterThread(11130, 450, 100, "images/monsters/물걸레괴물.gif", player),
     		new GunMonster(11430, 400, 400, "images/monsters/날개괴물.gif", player)
     		};
@@ -44,7 +44,7 @@ public class Monster {
 	
     public void createMonsters() { // 메소드 호출 시 Monster 객체가 배열에 추가
     	monsterList.clear();
-		monsterList.add(new MonsterThread(1200, 450, 100, "images/monsters/지렁이괴물.gif", player));
+		monsterList.add(new MonsterThread(1200, 450, 100, "images/monsters/미사일.png", player));
 		monsterList.add(new MonsterThread(1600, 450, 130, "images/monsters/물걸레괴물.gif", player));
         for (int i = 0; i < monsterList.size(); i++) {
         	monsterList.get(i).start();

@@ -69,11 +69,11 @@ public class Stage1Panel extends JPanel{
 
 	
 	// 장애물 이미지 아이콘들
-	private ImageIcon tacle10Ic = new ImageIcon("images/map/무당벌레장애물.gif"); // 1칸 장애물
+	private ImageIcon tacle10Ic = new ImageIcon("images/map/불꽃.gif"); // 1칸 장애물
 	
 	// 피격시 붉은 화면
 	private ImageIcon redBg = new ImageIcon("images/map/redBg.png"); 
-	
+
 	// 아이템 이미지 아이콘들
 	private ImageIcon item1Ic = new ImageIcon("images/item/포션_아이템.png");
 	private ImageIcon item2Ic = new ImageIcon("images/item/체리_아이템.png");
@@ -101,8 +101,7 @@ public class Stage1Panel extends JPanel{
 	private int[] sizeArr; // 이미지의 넓이와 높이를 가져오는 1차원 배열
 	private int[][] colorArr; // 이미지의 x y 좌표의 픽셀 색값을 저장하는 2차원배열
 		
-	//private int end = back.getWidth(null)-(view.width-1660); // 도착지
-	private int end = 500;
+	private int end = back.getWidth(null)-(view.width-1660); // 도착지
 	
 	private Player player;
 	private Monster monster;
@@ -189,7 +188,7 @@ public class Stage1Panel extends JPanel{
 		String tempMap = null;
 		
 		if (num == 1) {
-			tempMap = "images/map/맵배치.png";
+			tempMap = "images/map/stage1맵배치.png";
 		}
 
 		// 맵 정보 불러오기

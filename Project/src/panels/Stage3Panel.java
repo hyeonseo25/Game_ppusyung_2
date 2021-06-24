@@ -65,8 +65,8 @@ public class Stage3Panel extends JPanel{
 
 	private ImageIcon field2Ic = new ImageIcon("images/map/stage3발판.png"); // 공중발판
 
-	// 장애물 이미지 아이콘들
-	private ImageIcon tacle10Ic = new ImageIcon("images/map/무당벌레장애물.gif"); // 1칸 장애물
+	// 장애물 이미지 아이콘들ao
+	private ImageIcon tacle10Ic = new ImageIcon("images/map/불꽃.gif"); // 1칸 장애물
 	
 	// 피격시 붉은 화면
 	private ImageIcon redBg = new ImageIcon("images/map/redBg.png"); 
@@ -219,7 +219,14 @@ public class Stage3Panel extends JPanel{
 				}
 			} // end of for j
 		} //end of for i
-		
+		for (int i = 0; i < maxX; i += 2) { // 장애물은 4칸을 차지하는 공간이기 때문에 2,2사이즈로 반복문을 돌린다.
+			for (int j = 0; j < maxY; j += 2) {
+				if (colorArr[i][j] == 12829635) { // 색값이 12829635 일경우 (회색)
+					// 좌표에 40을 곱하고, 넓이와 높이는 80으로 한다.
+					fieldList.add(new Field(field2Ic.getImage(), i*40 , j * 40, 80, 45));
+				}
+			}
+		} // end of for i
 		for (int i = 0; i < maxX; i += 4) { // 발판은 4칸을 차지하는 공간이기 때문에 2,2사이즈로 반복문을 돌린다.
 			for (int j = 0; j < maxY; j += 2) {
 				if (colorArr[i][j] == 0) { // 색값이 0 일경우 (검은색)

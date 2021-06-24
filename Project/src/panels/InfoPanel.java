@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 public class InfoPanel extends JPanel{
 	private JButton replaybt;
 	
-	private ImageIcon backImg = new ImageIcon("images/설명 팝업.png");
+	private ImageIcon backImg = new ImageIcon("images/게임설명.png");
 	private Image back = backImg.getImage();
 
 	public InfoPanel(Object o) {
@@ -23,7 +23,7 @@ public class InfoPanel extends JPanel{
 		replaybt.setBorderPainted(false);
 		replaybt.setFocusPainted(false);
 		replaybt.setContentAreaFilled(false);
-		replaybt.setBounds(1630, 100, exitButton.getWidth(null), exitButton.getHeight(null));
+		replaybt.setBounds(1700, 100, exitButton.getWidth(null), exitButton.getHeight(null));
 		replaybt.addMouseListener((MouseListener) o);
 		add(replaybt);
 		

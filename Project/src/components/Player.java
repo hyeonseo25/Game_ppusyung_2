@@ -500,6 +500,7 @@ public class Player {
 						}
 						Thread.sleep(200);
 						setHit(false);
+						
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
