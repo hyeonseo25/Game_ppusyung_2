@@ -17,6 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import main.Main;
 import util.DBConnection;
 
 public class ClearPanel extends JPanel {
@@ -91,8 +92,7 @@ public class ClearPanel extends JPanel {
 			public void mousePressed(MouseEvent e) {
 				// TODO Auto-generated method stub
 				if(!(getName().equals("")||getName().equals("이름을 입력해주세요"))) {
-					DBConnection db = new DBConnection();
-					db.insertDB(name.getText() , Integer.toString(score), getStage());	
+					Main.db.insertDB(name.getText() , Integer.toString(score), getStage());	
 				}
 			}
 		});
