@@ -234,6 +234,7 @@ public class Stage1Panel extends JPanel{
 			for (int j = 0; j < maxY; j += 2) {
 				if (colorArr[i][j] == 12829635) { // 색값이 12829635 일경우 (회색)
 					// 좌표에 40을 곱하고, 넓이와 높이는 80으로 한다.
+					fieldList.add(new Field(field2Ic.getImage(), i*40 , j * 40 + 10, 80, 45));
 					fieldList.add(new Field(field2Ic.getImage(), i*40 , j * 40, 80, 45));
 				}
 			}
@@ -243,6 +244,7 @@ public class Stage1Panel extends JPanel{
 			for (int j = 0; j < maxY; j += 2) {
 				if (colorArr[i][j] == 0) { // 색값이 0 일경우 (검은색)
 					// 좌표에 40을 곱하고, 넓이와 높이는 80,100으로 한다.
+					fieldList.add(new Field(field1Ic.getImage(), i * 40 , j * 40 + 10, 160, 427));
 					fieldList.add(new Field(field1Ic.getImage(), i * 40 , j * 40, 160, 427));
 				}
 			}
@@ -534,7 +536,7 @@ public class Stage1Panel extends JPanel{
 		
 	//패널 전용 스레드
 	public void movebg() {
-		backX -=10;
+		backX -=3;
 		for (int i = 0; i < monster.getMonsterList().size(); i++) {
 			monster.getMonsterList().get(i).m_move(15);	
 		}

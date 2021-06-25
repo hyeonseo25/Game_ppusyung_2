@@ -537,7 +537,7 @@ public class Stage2Panel extends JPanel{
 		
 	//패널 전용 스레드
 	public void movebg() {
-		backX -=10;
+		backX -=3;
 		for (int i = 0; i < monster.getMonsterList().size(); i++) {
 			monster.getMonsterList().get(i).m_move(15);	
 		}
