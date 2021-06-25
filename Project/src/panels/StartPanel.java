@@ -17,7 +17,6 @@ import java.io.File;
 
 public class StartPanel extends JPanel{
 	private JButton startbt;
-	private JButton exitbt;
 	private JButton rankbt;
 	private JButton infobt;
 	
@@ -33,18 +32,8 @@ public class StartPanel extends JPanel{
 		ImageIcon startButtonMouseOver = new ImageIcon("images/button/플레이버튼(마우스 오버).png");
 		Image rankButton = new ImageIcon("images/button/랭킹버튼.png").getImage();
 		ImageIcon rankButtonMouseOver = new ImageIcon("images/button/랭킹버튼(마우스 오버).png");
-		Image exitButton = new ImageIcon("images/button/ExitButton.png").getImage();
 		Image InfoButton = new ImageIcon("images/button/설명버튼.png").getImage();
 		ImageIcon InfoButtonMouseOver = new ImageIcon("images/button/설명버튼(마우스 오버).png");
-		
-		exitbt = new JButton(new ImageIcon("images/button/ExitButton.png"));
-		exitbt.setName("ExitButton");
-		exitbt.setBorderPainted(false);
-		exitbt.setFocusPainted(false);
-		exitbt.setContentAreaFilled(false);
-		exitbt.setBounds(20, 20, exitButton.getWidth(null), exitButton.getHeight(null));		
-		exitbt.addMouseListener((MouseListener) o);
-		add(exitbt);
 		
 		startbt = new JButton(new ImageIcon("images/button/플레이버튼.png"));
 		startbt.setName("StartButton");
