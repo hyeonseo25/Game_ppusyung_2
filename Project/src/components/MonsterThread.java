@@ -30,7 +30,7 @@ public class MonsterThread extends Thread{
 		setHp(hp);
 		setStatus(true);
 		setImage(Image);
-		if(!Image.equals("images/monsters/날개괴물.gif")) {
+		if(!Image.equals("images/monsters/날개괴물.gif") && !Image.equals("images/monsters/미사일.png")) {
 			fall();
 		}
 		this.player = player;

@@ -169,7 +169,7 @@ public class Stage3Panel extends JPanel{
 		player.fall(); // field 위에 플레이어가 있으면 떨어지게
 		player.deleteShot(); // 화면 밖으로 나간 총알을 없애는 메서드
 		monster = new Monster(player);
-		monster.createMonsters(); // 프레임 생성시 Monster 객체들을 배열에 추가
+		monster.createMonsters(3); // 프레임 생성시 Monster 객체들을 배열에 추가
 		setCpField();
 		repaintThread();
 		playMusic();
