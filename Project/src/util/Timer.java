@@ -15,8 +15,8 @@ public class Timer extends Thread{
 		}
 	}
 	
-	public Timer() {
-		setSeconds(120);
+	public Timer(int second) {
+		setSeconds(second);
 	}
 	
 	public void passTime() {

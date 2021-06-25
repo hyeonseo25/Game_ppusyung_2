@@ -163,7 +163,7 @@ public class Stage2Panel extends JPanel{
 	}
 	
 	public void gameStart() {
-		time = new util.Timer();
+		time = new util.Timer(160);
 		time.start();
 		player = new Player(this,2);
 		player.fall(); // field 위에 플레이어가 있으면 떨어지게

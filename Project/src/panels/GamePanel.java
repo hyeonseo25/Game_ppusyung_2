@@ -155,7 +155,7 @@ public class GamePanel extends JPanel{
 	}
 	
 	public void gameStart() {
-		time = new util.Timer();
+		time = new util.Timer(160);
 		time.start();
 		player = new Player(this,1);
 
