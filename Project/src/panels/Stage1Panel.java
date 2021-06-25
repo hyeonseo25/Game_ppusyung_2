@@ -300,10 +300,11 @@ public class Stage1Panel extends JPanel{
 			public void keyPressed(KeyEvent e) {
 				int keyCode = e.getKeyCode();
 				switch(keyCode) {
-				case KeyEvent.VK_A: keyLeft = true; break;
-				case KeyEvent.VK_D: keyRight = true; break;
-				case KeyEvent.VK_ENTER: keyEnter = true; break;
+				case KeyEvent.VK_LEFT: keyLeft = true; break;
+				case KeyEvent.VK_RIGHT: keyRight = true; break;
+				case KeyEvent.VK_A: keyEnter = true; break;
 				case KeyEvent.VK_SPACE: 
+				case KeyEvent.VK_UP: 
 					if(player.getCountJump() < 2) {
 						player.jump();
 						Sound("music/jumpSound.wav", false);
@@ -314,9 +315,9 @@ public class Stage1Panel extends JPanel{
 			@Override
 			public void keyReleased(KeyEvent e) {
 				switch(e.getKeyCode()) {
-				case KeyEvent.VK_A: keyLeft = false; player.stop();break;
-				case KeyEvent.VK_D: keyRight = false;  player.stop();break;
-				case KeyEvent.VK_ENTER: keyEnter = false; break;
+				case KeyEvent.VK_LEFT: keyLeft = false; player.stop();break;
+				case KeyEvent.VK_RIGHT: keyRight = false;  player.stop();break;
+				case KeyEvent.VK_A: keyEnter = false; break;
 				case KeyEvent.VK_SHIFT: 
 					if(player.getHit_status()!=3) {
 						player.setHit_status(player.getHit_status()+1);

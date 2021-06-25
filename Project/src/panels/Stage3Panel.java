@@ -296,40 +296,41 @@ public class Stage3Panel extends JPanel{
 	}
 	
 	// 리스너 추가 메서드
-	private void initListener() {
-		addKeyListener(new KeyAdapter() { // 키 리스너 추가
-			@Override
-			public void keyPressed(KeyEvent e) {
-				int keyCode = e.getKeyCode();
-				switch(keyCode) {
-				case KeyEvent.VK_A: keyLeft = true; break;
-				case KeyEvent.VK_D: keyRight = true; break;
-				case KeyEvent.VK_ENTER: keyEnter = true; break;
-				case KeyEvent.VK_SPACE: 
-					if(player.getCountJump() < 2) {
-						player.jump();
-						Sound("music/jumpSound.wav", false);
+		private void initListener() {
+			addKeyListener(new KeyAdapter() { // 키 리스너 추가
+				@Override
+				public void keyPressed(KeyEvent e) {
+					int keyCode = e.getKeyCode();
+					switch(keyCode) {
+					case KeyEvent.VK_LEFT: keyLeft = true; break;
+					case KeyEvent.VK_RIGHT: keyRight = true; break;
+					case KeyEvent.VK_A: keyEnter = true; break;
+					case KeyEvent.VK_SPACE: 
+					case KeyEvent.VK_UP: 
+						if(player.getCountJump() < 2) {
+							player.jump();
+							Sound("music/jumpSound.wav", false);
+						}
+						break;
 					}
-					break;
 				}
-			}
-			@Override
-			public void keyReleased(KeyEvent e) {
-				switch(e.getKeyCode()) {
-				case KeyEvent.VK_A: keyLeft = false; player.stop();break;
-				case KeyEvent.VK_D: keyRight = false;  player.stop();break;
-				case KeyEvent.VK_ENTER: keyEnter = false; break;
-				case KeyEvent.VK_SHIFT: 
-					if(player.getHit_status()!=3) {
-						player.setHit_status(player.getHit_status()+1);
-					}else {
-						player.setHit_status(1);
+				@Override
+				public void keyReleased(KeyEvent e) {
+					switch(e.getKeyCode()) {
+					case KeyEvent.VK_LEFT: keyLeft = false; player.stop();break;
+					case KeyEvent.VK_RIGHT: keyRight = false;  player.stop();break;
+					case KeyEvent.VK_A: keyEnter = false; break;
+					case KeyEvent.VK_SHIFT: 
+						if(player.getHit_status()!=3) {
+							player.setHit_status(player.getHit_status()+1);
+						}else {
+							player.setHit_status(1);
+						}
+						break;
 					}
-					break;
 				}
-			}
-		});
-	}
+			});
+		}
 	
 	public void keyCheck() {
 		if(keyLeft==true) {				
