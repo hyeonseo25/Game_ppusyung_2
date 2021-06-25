@@ -57,6 +57,13 @@ public class Stage1Panel extends JPanel{
 
 	private Image back = backImg.getImage();
 	
+	//무기 변환
+	private Image gun = new ImageIcon("images/총보여주기.png").getImage();
+	private Image bow = new ImageIcon("images/활보여주기.png").getImage();
+	private Image jumeog = new ImageIcon("images/주먹 보여주기.png").getImage();
+
+
+	
 	//체력 이미지
 	private ImageIcon hpImg = new ImageIcon("images/HP.png");
 	private Image hp = hpImg.getImage();
@@ -448,6 +455,17 @@ public class Stage1Panel extends JPanel{
 			// 글씨 잘보이게 하기 위한 흰 뒷 배경
 			g.drawImage(textBackImg1, (view.width/2 - textBackImg1.getWidth(null)/2), 11, this);
 			g.drawImage(textBackImg2, 1685, 11, this);
+			switch(player.getHit_status()) {
+			case 1:
+				g.drawImage(gun, 20, 870, this);
+				break;
+			case 2:
+				g.drawImage(bow,20, 870, this);
+				break;
+			case 3:
+				g.drawImage(jumeog,20, 870, this);
+
+			}
 			
 			Font font = new Font("돋움", Font.BOLD, 40);
 			g.setFont(font);  //타이머 글씨체
@@ -455,6 +473,7 @@ public class Stage1Panel extends JPanel{
 			g.drawString(getScore(), 1750, 50); // 점수 그리기
 			
 			g.drawString("1", 1600, 50); // 점수 그리기
+			
 		}
 		
 		// 게임 오브젝트 배치 
