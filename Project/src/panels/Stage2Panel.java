@@ -456,8 +456,6 @@ public class Stage2Panel extends JPanel{
 			g.setFont(font);  //타이머 글씨체
 			g.drawString(getTime(), (view.width/2 - textBackImg1.getWidth(null)/2) + 22, 50); // 타이머 그리기
 			g.drawString(getScore(), 1750, 50); // 점수 그리기
-			
-			g.drawString("2", 1600, 50); // 점수 그리기
 		}
 		
 		// 게임 오브젝트 배치 

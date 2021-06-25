@@ -204,9 +204,5 @@ public class Main extends ListenerAdapter{
 			infoPanel.requestFocus(); // 리스너를 info패널에 강제로 줌
 			location = 2;
 		}
-		
-		else if (e.getComponent().getName().equals("ExitButton")) { // ExitButton이라는 이름을 가진 버튼을 눌렀다면
-			System.exit(0); 
-		}
 	}
 }
